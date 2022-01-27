@@ -1,0 +1,17 @@
+D:\Dev\PROJET controller robot\App\Robot Controller\Robot Controller\bin\Debug\netcoreapp3.1\Robot Controller.exe
+D:\Dev\PROJET controller robot\App\Robot Controller\Robot Controller\bin\Debug\netcoreapp3.1\Robot Controller.deps.json
+D:\Dev\PROJET controller robot\App\Robot Controller\Robot Controller\bin\Debug\netcoreapp3.1\Robot Controller.runtimeconfig.json
+D:\Dev\PROJET controller robot\App\Robot Controller\Robot Controller\bin\Debug\netcoreapp3.1\Robot Controller.runtimeconfig.dev.json
+D:\Dev\PROJET controller robot\App\Robot Controller\Robot Controller\bin\Debug\netcoreapp3.1\Robot Controller.dll
+D:\Dev\PROJET controller robot\App\Robot Controller\Robot Controller\bin\Debug\netcoreapp3.1\Robot Controller.pdb
+D:\Dev\PROJET controller robot\App\Robot Controller\Robot Controller\obj\Debug\netcoreapp3.1\Robot Controller.GeneratedMSBuildEditorConfig.editorconfig
+D:\Dev\PROJET controller robot\App\Robot Controller\Robot Controller\obj\Debug\netcoreapp3.1\Robot Controller.AssemblyInfoInputs.cache
+D:\Dev\PROJET controller robot\App\Robot Controller\Robot Controller\obj\Debug\netcoreapp3.1\Robot Controller.AssemblyInfo.cs
+D:\Dev\PROJET controller robot\App\Robot Controller\Robot Controller\obj\Debug\netcoreapp3.1\Robot Controller.csproj.CoreCompileInputs.cache
+D:\Dev\PROJET controller robot\App\Robot Controller\Robot Controller\obj\Debug\netcoreapp3.1\Robot Controller.dll
+D:\Dev\PROJET controller robot\App\Robot Controller\Robot Controller\obj\Debug\netcoreapp3.1\Robot Controller.pdb
+D:\Dev\PROJET controller robot\App\Robot Controller\Robot Controller\obj\Debug\netcoreapp3.1\Robot Controller.genruntimeconfig.cache
+D:\Dev\PROJET controller robot\App\Robot Controller\Robot Controller\obj\Debug\netcoreapp3.1\Robot Controller.csproj.AssemblyReference.cache
+D:\Dev\PROJET controller robot\App\Robot Controller\Robot Controller\bin\Debug\netcoreapp3.1\Assembly-CSharp.dll
+D:\Dev\PROJET controller robot\App\Robot Controller\Robot Controller\bin\Debug\netcoreapp3.1\UnityEngine.CoreModule.dll
+D:\Dev\PROJET controller robot\App\Robot Controller\Robot Controller\obj\Debug\netcoreapp3.1\Robot Controller.csproj.CopyComplete
