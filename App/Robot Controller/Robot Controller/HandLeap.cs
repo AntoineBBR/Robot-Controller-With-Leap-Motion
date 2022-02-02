@@ -12,16 +12,19 @@ namespace Robot_Controller
 
         public float GrabStrength { get; set; }
 
-        public string X { get; set; }
+        public string Side { get; set; }
+
+        public Leap.LeapQuaternion test { get; set; }
 
 
 
-        public HandLeap(int id, Leap.Vector palmPosition, float grabStrength, string x)
+        public HandLeap(int id, Leap.Vector palmPosition, float grabStrength, bool isLeft, Leap.LeapQuaternion t)
         {
             Id = id;
             PalmPosition = palmPosition;
             GrabStrength = grabStrength;
-            X = x;
+            Side = isLeft ? "L" : "R";
+            test = t;
         }
 
 

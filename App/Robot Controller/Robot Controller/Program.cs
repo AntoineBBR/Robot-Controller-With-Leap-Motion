@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Threading;
 using System.Timers;
 
 namespace Robot_Controller
@@ -23,28 +24,22 @@ namespace Robot_Controller
 
 
             //Définir la fonction qui tourne en boucle dans un second thread
-            Timer timer = new Timer(100);
+            System.Timers.Timer timer = new System.Timers.Timer(100);
             timer.Elapsed += (source, ElapsedEventArgs) =>
             {
-                Console.Clear();
+                
                 IEnumerable<HandLeap> hands = new List<HandLeap>(manager.Hands);
 
-                if(hands.Count() == 0)
-                {
-                    Console.WriteLine("Pas de main");
-                }
+                
 
-                foreach(var hand in hands)
-                {
-                    Console.Write("|");
-                    Console.Write(hand.Id);
-                    Console.Write("|  ");
-                    Console.Write(hand.PalmPosition);
-                    Console.Write("  :  ");
-                    Console.Write(hand.GrabStrength);
-                    Console.WriteLine(" / ");
-                    Console.WriteLine(hand.X);
-                }
+
+
+
+
+
+
+                AffichageMain(hands);
+                Thread.Sleep(1000 / 30);
             };
 
             //démarage du thread
@@ -59,11 +54,29 @@ namespace Robot_Controller
 
 
 
+        private static void AffichageMain(IEnumerable<HandLeap> hands)
+        {
+            Console.Clear();
+            if (hands.Count() == 0)
+            {
+                Console.WriteLine("Pas de main");
+            }
+            else
+            {
+                foreach (var hand in hands)
+                {
+                    Console.WriteLine("|" + hand.Id + hand.Side + "|  " + hand.PalmPosition + "  :  " + hand.GrabStrength);
+                    Console.WriteLine(hand.test);
+                }
+            }
+        }
+
+
 
         private static void Ctrl_FrameReady(object sender, Leap.FrameEventArgs e)
         {
             manager.Hands.Clear();
-            var hands = e.frame.Hands.Select(h => new HandLeap(h.Id, h.PalmPosition, h.GrabStrength, h.ToString()));
+            var hands = e.frame.Hands.Select(h => new HandLeap(h.Id, h.PalmPosition, h.GrabStrength, h.IsLeft, h.Rotation));
             foreach(var h in hands)
             {
                 manager.Hands.Add(h);

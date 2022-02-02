@@ -8,5 +8,7 @@ namespace Robot_Controller
     {
         public HashSet<HandLeap> Hands { get => hands; set => hands = value; }
         private HashSet<HandLeap> hands = new HashSet<HandLeap>();
+
+        public HandLeap StartPosition { get; set; }
     }
 }
