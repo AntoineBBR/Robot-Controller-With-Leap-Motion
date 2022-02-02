@@ -27,9 +27,14 @@ namespace Robot_Controller
             System.Timers.Timer timer = new System.Timers.Timer(100);
             timer.Elapsed += (source, ElapsedEventArgs) =>
             {
-                
                 IEnumerable<HandLeap> hands = new List<HandLeap>(manager.Hands);
-
+                foreach(var hand in hands)
+                {
+                    if(hand.Side == "R")
+                    {
+                        detectionSurMainDroite(hand);
+                    }
+                }
                 
 
 
@@ -52,6 +57,11 @@ namespace Robot_Controller
             Console.WriteLine("Capteur déconnecté");
         }
 
+
+        private static void detectionSurMainDroite(HandLeap hand)
+        {
+
+        }
 
 
         private static void AffichageMain(IEnumerable<HandLeap> hands)
