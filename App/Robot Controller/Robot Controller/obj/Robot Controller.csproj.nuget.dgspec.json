@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\valen\\Desktop\\VR\\robot-controller-with-leap-motion\\App\\Robot Controller\\Robot Controller\\Robot Controller.csproj": {}
   },
   "projects": {
@@ -15,6 +16,22 @@
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\valen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+    "D:\\Dev\\projet_robotController\\robot-controller-with-leap-motion\\App\\Robot Controller\\Robot Controller\\Robot Controller.csproj": {}
+  },
+  "projects": {
+    "D:\\Dev\\projet_robotController\\robot-controller-with-leap-motion\\App\\Robot Controller\\Robot Controller\\Robot Controller.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Dev\\projet_robotController\\robot-controller-with-leap-motion\\App\\Robot Controller\\Robot Controller\\Robot Controller.csproj",
+        "projectName": "Robot Controller",
+        "projectPath": "D:\\Dev\\projet_robotController\\robot-controller-with-leap-motion\\App\\Robot Controller\\Robot Controller\\Robot Controller.csproj",
+        "packagesPath": "C:\\Users\\antoine\\.nuget\\packages\\",
+        "outputPath": "D:\\Dev\\projet_robotController\\robot-controller-with-leap-motion\\App\\Robot Controller\\Robot Controller\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\antoine\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> bf7d653b43737dd8f4b00fe391578c449738806e
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
