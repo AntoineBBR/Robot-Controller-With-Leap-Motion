@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "fa87894b-fbe9-4796-baca-4aadc3955568": {
+      "ProjectGuid": "fa87894b-fbe9-4796-baca-4aadc3955568",
+      "DisplayName": "Robot Controller",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

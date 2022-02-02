@@ -15,3 +15,20 @@ D:\Dev\PROJET controller robot\App\Robot Controller\Robot Controller\obj\Debug\n
 D:\Dev\PROJET controller robot\App\Robot Controller\Robot Controller\bin\Debug\netcoreapp3.1\Assembly-CSharp.dll
 D:\Dev\PROJET controller robot\App\Robot Controller\Robot Controller\bin\Debug\netcoreapp3.1\UnityEngine.CoreModule.dll
 D:\Dev\PROJET controller robot\App\Robot Controller\Robot Controller\obj\Debug\netcoreapp3.1\Robot Controller.csproj.CopyComplete
+C:\Users\valen\Desktop\VR\robot-controller-with-leap-motion\App\Robot Controller\Robot Controller\bin\Debug\netcoreapp3.1\Robot Controller.exe
+C:\Users\valen\Desktop\VR\robot-controller-with-leap-motion\App\Robot Controller\Robot Controller\bin\Debug\netcoreapp3.1\Robot Controller.deps.json
+C:\Users\valen\Desktop\VR\robot-controller-with-leap-motion\App\Robot Controller\Robot Controller\bin\Debug\netcoreapp3.1\Robot Controller.runtimeconfig.json
+C:\Users\valen\Desktop\VR\robot-controller-with-leap-motion\App\Robot Controller\Robot Controller\bin\Debug\netcoreapp3.1\Robot Controller.runtimeconfig.dev.json
+C:\Users\valen\Desktop\VR\robot-controller-with-leap-motion\App\Robot Controller\Robot Controller\bin\Debug\netcoreapp3.1\Robot Controller.dll
+C:\Users\valen\Desktop\VR\robot-controller-with-leap-motion\App\Robot Controller\Robot Controller\bin\Debug\netcoreapp3.1\Robot Controller.pdb
+C:\Users\valen\Desktop\VR\robot-controller-with-leap-motion\App\Robot Controller\Robot Controller\bin\Debug\netcoreapp3.1\Assembly-CSharp.dll
+C:\Users\valen\Desktop\VR\robot-controller-with-leap-motion\App\Robot Controller\Robot Controller\bin\Debug\netcoreapp3.1\UnityEngine.CoreModule.dll
+C:\Users\valen\Desktop\VR\robot-controller-with-leap-motion\App\Robot Controller\Robot Controller\obj\Debug\netcoreapp3.1\Robot Controller.csproj.AssemblyReference.cache
+C:\Users\valen\Desktop\VR\robot-controller-with-leap-motion\App\Robot Controller\Robot Controller\obj\Debug\netcoreapp3.1\Robot Controller.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\valen\Desktop\VR\robot-controller-with-leap-motion\App\Robot Controller\Robot Controller\obj\Debug\netcoreapp3.1\Robot Controller.AssemblyInfoInputs.cache
+C:\Users\valen\Desktop\VR\robot-controller-with-leap-motion\App\Robot Controller\Robot Controller\obj\Debug\netcoreapp3.1\Robot Controller.AssemblyInfo.cs
+C:\Users\valen\Desktop\VR\robot-controller-with-leap-motion\App\Robot Controller\Robot Controller\obj\Debug\netcoreapp3.1\Robot Controller.csproj.CoreCompileInputs.cache
+C:\Users\valen\Desktop\VR\robot-controller-with-leap-motion\App\Robot Controller\Robot Controller\obj\Debug\netcoreapp3.1\Robot Controller.csproj.CopyComplete
+C:\Users\valen\Desktop\VR\robot-controller-with-leap-motion\App\Robot Controller\Robot Controller\obj\Debug\netcoreapp3.1\Robot Controller.dll
+C:\Users\valen\Desktop\VR\robot-controller-with-leap-motion\App\Robot Controller\Robot Controller\obj\Debug\netcoreapp3.1\Robot Controller.pdb
+C:\Users\valen\Desktop\VR\robot-controller-with-leap-motion\App\Robot Controller\Robot Controller\obj\Debug\netcoreapp3.1\Robot Controller.genruntimeconfig.cache
