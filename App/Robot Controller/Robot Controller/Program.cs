@@ -32,7 +32,7 @@ namespace Robot_Controller
                 {
                     if(hand.Side == "R")
                     {
-                        detectionSurMainDroite(hand);
+                        DetectionSurMainDroite(hand);
                     }
                 }
                 
@@ -58,9 +58,18 @@ namespace Robot_Controller
         }
 
 
-        private static void detectionSurMainDroite(HandLeap hand)
+        private static void DetectionSurMainDroite(HandLeap hand)
         {
-
+            if (hand.GrabStrength == 1 && !manager.IsStartPositionLock)
+            {
+                manager.SetAllStartPosition(hand);
+                Console.WriteLine("positionLock");
+            }
+            else
+            {
+                manager.SetAllStartPosition(null);
+                Console.WriteLine("positionUnLock");
+            }
         }
 
 
