@@ -19,6 +19,8 @@ namespace Robot_Controller
             IsStartPositionLock = false;
         }
 
+
+
         public void SetAllStartPosition(HandLeap hand)
         {
             StartPosition = hand;

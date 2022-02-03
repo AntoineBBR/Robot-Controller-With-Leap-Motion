@@ -10,7 +10,7 @@ namespace Robot_Controller
     class Program
     {
         private static HandLeapManager manager = new HandLeapManager();
-        
+        private static CalculateurDeplacement calculateurDeplacement = new CalculateurDeplacement();
 
 
 
@@ -25,27 +25,7 @@ namespace Robot_Controller
 
             //Définir la fonction qui tourne en boucle dans un second thread
             System.Timers.Timer timer = new System.Timers.Timer(100);
-            timer.Elapsed += (source, ElapsedEventArgs) =>
-            {
-                IEnumerable<HandLeap> hands = new List<HandLeap>(manager.Hands);
-                foreach(var hand in hands)
-                {
-                    if(hand.Side == "R")
-                    {
-                        DetectionSurMainDroite(hand);
-                    }
-                }
-                
-
-
-
-
-
-
-
-                AffichageMain(hands);
-                Thread.Sleep(1000 / 30);
-            };
+            timer.Elapsed += (source, ElapsedEventArgs) => Boucle();
 
             //démarage du thread
             timer.Start();
@@ -58,6 +38,34 @@ namespace Robot_Controller
         }
 
 
+
+
+
+        private static void Boucle()
+        {
+            IEnumerable<HandLeap> hands = new List<HandLeap>(manager.Hands);
+            foreach (var hand in hands)
+            {
+                if (hand.Side == "R")
+                {
+                    DetectionSurMainDroite(hand);
+                    if (manager.IsStartPositionLock)
+                    {
+                        calculateurDeplacement.CalculDeplacementQuatreAxe(manager.StartPosition, hand);
+                    }
+                }
+            }
+
+            
+
+
+            AffichageMain(hands);
+            Thread.Sleep(1000 / 60);
+        }
+
+
+
+
         private static void DetectionSurMainDroite(HandLeap hand)
         {
             if (hand.GrabStrength == 1 && !manager.IsStartPositionLock)
@@ -65,7 +73,7 @@ namespace Robot_Controller
                 manager.SetAllStartPosition(hand);
                 Console.WriteLine("positionLock");
             }
-            else
+            if(hand.GrabStrength == 0 && manager.IsStartPositionLock)
             {
                 manager.SetAllStartPosition(null);
                 Console.WriteLine("positionUnLock");
@@ -76,12 +84,18 @@ namespace Robot_Controller
         private static void AffichageMain(IEnumerable<HandLeap> hands)
         {
             Console.Clear();
+
             if (hands.Count() == 0)
             {
                 Console.WriteLine("Pas de main");
             }
             else
             {
+
+                Console.Write("Start Position : ");
+                if (manager.IsStartPositionLock) Console.WriteLine(manager.StartPosition.PalmPosition);
+                else Console.WriteLine("null");
+
                 foreach (var hand in hands)
                 {
                     Console.WriteLine("|" + hand.Id + hand.Side + "|  " + hand.PalmPosition + "  :  " + hand.GrabStrength);
