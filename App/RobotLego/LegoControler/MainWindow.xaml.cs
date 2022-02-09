@@ -95,7 +95,7 @@ namespace LegoControler
 
         private void ButtonAction_ForwardHalf(object sender, RoutedEventArgs e)
         {
-            commands.MoveLinearWithPower(10);
+            commands.MoveLinearWithPower(50);
         }
 
         private void Action_Test_1(object sender, RoutedEventArgs e)
