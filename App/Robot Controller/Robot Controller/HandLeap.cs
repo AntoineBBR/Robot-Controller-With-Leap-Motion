@@ -14,17 +14,17 @@ namespace Robot_Controller
 
         public string Side { get; set; }
 
-        public Leap.LeapQuaternion test { get; set; }
+        public Leap.LeapQuaternion Rotation { get; set; }
 
 
 
-        public HandLeap(int id, Leap.Vector palmPosition, float grabStrength, bool isLeft, Leap.LeapQuaternion t)
+        public HandLeap(int id, Leap.Vector palmPosition, float grabStrength, bool isLeft, Leap.LeapQuaternion rotation)
         {
             Id = id;
             PalmPosition = palmPosition;
             GrabStrength = grabStrength;
             Side = isLeft ? "L" : "R";
-            test = t;
+            Rotation = rotation;
         }
 
 

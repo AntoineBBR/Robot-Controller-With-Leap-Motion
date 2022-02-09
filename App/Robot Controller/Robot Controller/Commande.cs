@@ -6,9 +6,11 @@ namespace Robot_Controller
 {
     enum Commande
     {
-        Haut,
-        Bas,
-        Gauche,
-        Droite
+        HAUT,
+        BAS,
+        GAUCHE,
+        DROITE,
+        TOURNERGAUCHE,
+        TOURNERDROITE
     }
 }
