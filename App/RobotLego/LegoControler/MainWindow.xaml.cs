@@ -15,40 +15,17 @@ namespace LegoControler
     /// </summary>
     public partial class MainWindow : Window
     {
+        private BrickManager brickManager = Manager.brickManager;
+        private Commands commands = Manager.commands;
+
         private BluetoothDevice selectedDevice;
         event EventHandler DeviceSelected;
-
-        BrickManager brickManager = new BrickManager();
 
         public MainWindow()
         {
             InitializeComponent();
             DataContext = brickManager;
-        }
-
-        internal static Dictionary<char, OutputPort> ports = new Dictionary<char, OutputPort>()
-        {
-            {'A', OutputPort.A},
-            {'B', OutputPort.B},
-            {'C', OutputPort.C},
-            {'D', OutputPort.D}
-        };
-
-        internal static Dictionary<char, InputPort> inputPorts = new Dictionary<char, InputPort>()
-        {
-            {'A', InputPort.A},
-            {'B', InputPort.B},
-            {'C', InputPort.C},
-            {'D', InputPort.D}
-        };
-
-        internal static List<string> directionRobot = new List<string>()
-        {
-            "HAUT",
-            "BAS",
-            "GAUCHE",
-            "DROITE"
-        };
+        }     
 
         public BluetoothDevice SelectedDevice
         {
@@ -65,18 +42,7 @@ namespace LegoControler
             }
         }
 
-        private void root_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (brickManager.Connected)
-                brickManager.Disconnect();
-        }
-
-        private void root_Loaded(object sender, RoutedEventArgs e)
-        {
-            DeviceSelected += MainWindow_DeviceSelected;
-        }
-
-        private async void MainWindow_DeviceSelected(object sender, EventArgs e)
+        public async void MainWindow_DeviceSelected(object sender, EventArgs e)
         {
             await brickManager.ConnectAsync(SelectedDevice?.DeviceName, SelectedDevice?.COMPort);
 
@@ -87,72 +53,54 @@ namespace LegoControler
             }
         }
 
-        private async void Button_Click_1(object sender, RoutedEventArgs e)
+        public void root_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (brickManager.Connected)
+                brickManager.Disconnect();
+        }
+
+        public void root_Loaded(object sender, RoutedEventArgs e)
+        {
+            DeviceSelected += MainWindow_DeviceSelected;
+        }
+
+        // -----------------------------------------------------------------------------------------------------------------------------------------------
+        // -----------------------------------------------------------------------------------------------------------------------------------------------
+        // -----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             if (!(sender is Button)) return;
             char port = ((sender as Button).Content as string).Last();
-            if (!ports.ContainsKey(port)) return;
+            if (!Ports.ports.ContainsKey(port)) return;
 
-            //await brickManager.Brick.DirectCommand.TurnMotorAtPowerForTimeAsync(ports[port], 100, 2000, true);
-            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(ports[port], 100);
-            await Task.Delay(500);
-            await brickManager.DirectCommand.StopMotorAsync(inputPorts[port]);
-            await Task.Delay(500);
-            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(ports[port], -100);
-            await Task.Delay(500);
-            await brickManager.DirectCommand.StopMotorAsync(inputPorts[port]);
+            commands.Test(port);
         }
 
-        private async void ButtonAction_1(object sender, RoutedEventArgs e)
+        private void ButtonAction_1(object sender, RoutedEventArgs e)
         {
-            // Test
-            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.A, 100);
-            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.B, 100);
-            await Task.Delay(2000);
-            await brickManager.DirectCommand.StopMotorAsync(InputPort.A);
-            await brickManager.DirectCommand.StopMotorAsync(InputPort.B);
+            commands.Command_1();
         }
 
-        private async void ButtonAction_EmergencyStop(object sender, RoutedEventArgs e)
+        private void ButtonAction_EmergencyStop(object sender, RoutedEventArgs e)
         {
-            // Trouver comment arrêter seulement les port connectés
-            // Surement un for avec une condition mais pas sûr que ça soit mieux niveau performance
-            await brickManager.DirectCommand.StopMotorAsync(InputPort.A);
-            await brickManager.DirectCommand.StopMotorAsync(InputPort.B);
-            await brickManager.DirectCommand.StopMotorAsync(InputPort.C);
-            await brickManager.DirectCommand.StopMotorAsync(InputPort.D);
+            commands.EmergencyStop();
         }
 
-        private async void ButtonAction_ForwardFull(object sender, RoutedEventArgs e)
+        private void ButtonAction_ForwardFull(object sender, RoutedEventArgs e)
         {
-            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.A, 100);
-            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.B, 100);
+            commands.MoveLinearWithPower(100);
         }
 
-        private async void ButtonAction_ForwardHalf(object sender, RoutedEventArgs e)
+        private void ButtonAction_ForwardHalf(object sender, RoutedEventArgs e)
         {
-            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.A, 10);
-            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.B, 10);
+            commands.MoveLinearWithPower(10);
         }
 
         private void Action_Test_1(object sender, RoutedEventArgs e)
         { 
-            MoveLinearWithPower(10);
-        }
-
-        private async void MoveLinearWithPower(int power)
-        {
-            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.A, power);
-            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.B, power);
-            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.C, power);
-            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.D, power);
-        }
-
-
-
-        private async void ActionMain(object sender, RoutedEventArgs e)
-        {
-
+            commands.MoveLinearWithPower(10);
         }
     }
 }

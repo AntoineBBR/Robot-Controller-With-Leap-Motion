@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:LegoControler"
         xmlns:ev3="clr-namespace:AsyncEV3MotorCommandsLib;assembly=AsyncEV3MotorCommandsLib"
         mc:Ignorable="d" Closing="root_Closing" Loaded="root_Loaded"
-        Title="MainWindow" Height="350" Width="525" x:Name="root">
+        Title="MainWindow" Height="400" Width="600" x:Name="root">
 
     <Window.Resources>
         <ev3:InputPortToVisibilityConverter x:Key="inputPortToVisiblityConverter"/>
