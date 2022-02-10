@@ -1,10 +1,7 @@
 ﻿using AsyncEV3MotorCommandsLib;
 using BluetoothDevicesScanner;
-using Lego.Ev3.Core;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -75,32 +72,85 @@ namespace LegoControler
             char port = ((sender as Button).Content as string).Last();
             if (!Ports.ports.ContainsKey(port)) return;
 
-            commands.Test(port);
+            commands.MotorTest(port);
         }
 
-        private void ButtonAction_1(object sender, RoutedEventArgs e)
-        {
-            commands.Command_1();
-        }
 
         private void ButtonAction_EmergencyStop(object sender, RoutedEventArgs e)
         {
             commands.EmergencyStop();
         }
 
-        private void ButtonAction_ForwardFull(object sender, RoutedEventArgs e)
+        private void ButtonAction_Forward(object sender, RoutedEventArgs e)
         {
-            commands.MoveLinearWithPower(100);
+            commands.MoveLinearX(100);
         }
 
-        private void ButtonAction_ForwardHalf(object sender, RoutedEventArgs e)
+        private void ButtonAction_Backward(object sender, RoutedEventArgs e)
         {
-            commands.MoveLinearWithPower(50);
+            commands.MoveLinearX(-100);
         }
 
-        private void Action_Test_1(object sender, RoutedEventArgs e)
-        { 
-            commands.MoveLinearWithPower(10);
+
+
+        // ------------------ A TESTER ------------------ //
+
+        private void ButtonAction_Left(object sender, RoutedEventArgs e)
+        {
+            // TODO: Faire la mise au point
+            commands.MoveLinearY(100);
+        }
+
+        private void ButtonAction_Right(object sender, RoutedEventArgs e)
+        {
+            // TODO: Faire la mise au point
+            commands.MoveLinearY(100);
+        }
+
+        private void ButtonAction_UpLeft(object sender, RoutedEventArgs e)
+        {
+            // TODO: Faire la mise au point
+            commands.MoveCombinedXY(100);
+        }
+
+        private void ButtonAction_UpRight(object sender, RoutedEventArgs e)
+        {
+            // TODO: Faire la mise au point
+            commands.MoveCombinedXY(100);
+        }
+
+        private void ButtonAction_DownLeft(object sender, RoutedEventArgs e)
+        {
+            // TODO: Faire la mise au point
+            commands.MoveCombinedXY(100);
+        }
+
+        private void ButtonAction_DownRight(object sender, RoutedEventArgs e)
+        {
+            // TODO: Faire la mise au point
+            commands.MoveCombinedXY(100);
+        }
+
+        private void ButtonAction_TurnLeft(object sender, RoutedEventArgs e)
+        {
+            // TODO: Faire la mise au point
+            commands.TurnLeft(100);
+        }
+
+        private void ButtonAction_TurnRight(object sender, RoutedEventArgs e)
+        {
+            // TODO: Faire la mise au point
+            commands.TurnRight(100);
+        }
+
+
+
+
+        // ------------------ TESTS ------------------ //
+
+        private void ButtonAction_1(object sender, RoutedEventArgs e)
+        {
+            commands.Command_1();
         }
     }
 }

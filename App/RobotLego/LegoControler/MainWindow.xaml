@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:LegoControler"
         xmlns:ev3="clr-namespace:AsyncEV3MotorCommandsLib;assembly=AsyncEV3MotorCommandsLib"
         mc:Ignorable="d" Closing="root_Closing" Loaded="root_Loaded"
-        Title="MainWindow" Height="400" Width="600" x:Name="root">
+        Title="MainWindow" Width="600" x:Name="root">
 
     <Window.Resources>
         <ev3:InputPortToVisibilityConverter x:Key="inputPortToVisiblityConverter"/>
@@ -24,25 +24,64 @@
     </Window.Resources>
 
     <StackPanel Margin="5">
-        <ev3:EV3RobotChooser SelectedDevice="{Binding SelectedDevice, ElementName=root, Mode=TwoWay}"/>
         <Button Margin="0,0,0,5" Content="Moteur A" Click="Button_Click_1" IsEnabled="{Binding PortAConnected}"/>
         <Button Margin="0,0,0,5" Content="Moteur B" Click="Button_Click_1" IsEnabled="{Binding PortBConnected}"/>
         <Button Margin="0,0,0,5" Content="Moteur C" Click="Button_Click_1" IsEnabled="{Binding PortCConnected}"/>
         <Button Margin="0,0,0,5" Content="Moteur D" Click="Button_Click_1" IsEnabled="{Binding PortDConnected}"/>
 
+        <Grid Margin="0,10,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Button Grid.Column="1" Grid.Row="0" Margin="5" Content="AVANCER" Click="ButtonAction_Forward"/>
+            <Button Grid.Column="1" Grid.Row="2" Margin="5" Content="RECULER" Click="ButtonAction_Backward"/>
+
+            <Button Grid.Column="0" Grid.Row="1" Margin="5" Content="GAUCHE" Click="ButtonAction_Left"/>
+            <Button Grid.Column="2" Grid.Row="1" Margin="5" Content="DROITE" Click="ButtonAction_Right"/>
+
+            <Button Grid.Column="0" Grid.Row="0" Margin="5" Content="HAUT GAUCHE" Click="ButtonAction_UpLeft"/>
+            <Button Grid.Column="2" Grid.Row="0" Margin="5" Content="HAUT DROIT" Click="ButtonAction_UpRight"/>
+
+            <Button Grid.Column="0" Grid.Row="2" Margin="5" Content="BAS GAUCHE" Click="ButtonAction_DownLeft"/>
+            <Button Grid.Column="2" Grid.Row="2" Margin="5" Content="BAS DROIT" Click="ButtonAction_DownRight"/>
+
+            <Button Grid.Column="1" Grid.Row="1" Margin="5" Content="ARRET D'URGENCE" Click="ButtonAction_EmergencyStop"/>
+
+            <Slider Grid.Column="3" Grid.RowSpan="3" 
+                    HorizontalAlignment="Center" Margin="5"
+                    Minimum="0" Maximum="100"
+                    SmallChange="1" LargeChange="10"
+                    TickPlacement="BottomRight" TickFrequency="10"
+                    Orientation="Vertical" />
+        </Grid>
+        <Grid Margin="0,0,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <Button Grid.Column="0" Margin="5" Content="TOURNER A GAUCHE" Click="ButtonAction_TurnLeft"/>
+            <Button Grid.Column="1" Margin="5" Content="TOURNER A DROITE" Click="ButtonAction_TurnRight"/>
+        </Grid>
+
         <Button Margin="0,0,0,5" Content="Action 1" Click="ButtonAction_1" IsEnabled="{Binding PortAConnected}"/>
-
-        <Button Margin="0,0,0,5" Content="Avancer FULL" Click="ButtonAction_ForwardFull" IsEnabled="{Binding PortAConnected}"/>
-        <Button Margin="0,0,0,5" Content="Avancer HALF" Click="ButtonAction_ForwardHalf" IsEnabled="{Binding PortAConnected}"/>
-
-        <Button Margin="0,0,0,5" Content="Vitesse variable" Click="Action_Test_1"/>
-
-        <Button Margin="0,0,0,5" Content="ARRET D'URGENCE" Click="ButtonAction_EmergencyStop"/>
 
         <Rectangle Width="500" HorizontalAlignment="Center" Height="1" Fill="Black" Margin="10"/>
         <ContentControl Content="{Binding InputPort1}" ContentTemplate="{StaticResource inputPortTemplate}" HorizontalAlignment="Center" Visibility="{Binding InputPort1, Converter={StaticResource inputPortToVisiblityConverter}}"/>
         <ContentControl Content="{Binding InputPort2}" ContentTemplate="{StaticResource inputPortTemplate}" HorizontalAlignment="Center" Visibility="{Binding InputPort2, Converter={StaticResource inputPortToVisiblityConverter}}"/>
         <ContentControl Content="{Binding InputPort3}" ContentTemplate="{StaticResource inputPortTemplate}" HorizontalAlignment="Center" Visibility="{Binding InputPort3, Converter={StaticResource inputPortToVisiblityConverter}}"/>
         <ContentControl Content="{Binding InputPort4}" ContentTemplate="{StaticResource inputPortTemplate}" HorizontalAlignment="Center" Visibility="{Binding InputPort4, Converter={StaticResource inputPortToVisiblityConverter}}"/>
+
+        <ev3:EV3RobotChooser SelectedDevice="{Binding SelectedDevice, ElementName=root, Mode=TwoWay}"/>
     </StackPanel>
 </Window>
