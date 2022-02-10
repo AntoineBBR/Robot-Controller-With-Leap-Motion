@@ -61,9 +61,9 @@ namespace LegoControler
             DeviceSelected += MainWindow_DeviceSelected;
         }
 
-        // -----------------------------------------------------------------------------------------------------------------------------------------------
-        // -----------------------------------------------------------------------------------------------------------------------------------------------
-        // -----------------------------------------------------------------------------------------------------------------------------------------------
+        // ----------------------------------------------------------------------------------------------------------------------------------------------- //
+        // ----------------------------------------------------------------------------------------------------------------------------------------------- //
+        // ----------------------------------------------------------------------------------------------------------------------------------------------- //
 
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -98,57 +98,67 @@ namespace LegoControler
         private void ButtonAction_Left(object sender, RoutedEventArgs e)
         {
             // TODO: Faire la mise au point
-            commands.MoveLinearY(100);
+            commands.MoveLinearY(50);
         }
 
         private void ButtonAction_Right(object sender, RoutedEventArgs e)
         {
             // TODO: Faire la mise au point
-            commands.MoveLinearY(100);
+            commands.MoveLinearY(-50);
         }
 
         private void ButtonAction_UpLeft(object sender, RoutedEventArgs e)
         {
             // TODO: Faire la mise au point
-            commands.MoveCombinedXY(100);
+            commands.MoveCombinedXYLeft(100);
         }
 
         private void ButtonAction_UpRight(object sender, RoutedEventArgs e)
         {
             // TODO: Faire la mise au point
-            commands.MoveCombinedXY(100);
+            commands.MoveCombinedXYRight(100);
         }
 
         private void ButtonAction_DownLeft(object sender, RoutedEventArgs e)
         {
             // TODO: Faire la mise au point
-            commands.MoveCombinedXY(100);
+            commands.MoveCombinedXYLeft(-100);
         }
 
         private void ButtonAction_DownRight(object sender, RoutedEventArgs e)
         {
             // TODO: Faire la mise au point
-            commands.MoveCombinedXY(100);
+            commands.MoveCombinedXYRight(-100);
         }
 
         private void ButtonAction_TurnLeft(object sender, RoutedEventArgs e)
         {
             // TODO: Faire la mise au point
-            commands.TurnLeft(100);
+            commands.TurnLeft(50);
         }
 
         private void ButtonAction_TurnRight(object sender, RoutedEventArgs e)
         {
             // TODO: Faire la mise au point
-            commands.TurnRight(100);
+            commands.TurnRight(50);
         }
 
 
 
 
-        // ------------------ TESTS ------------------ //
+        // ------------------ SPECIALS ACTIONS ------------------ //
 
         private void ButtonAction_1(object sender, RoutedEventArgs e)
+        {
+            commands.Command_1();
+        }
+
+        private void ButtonAction_2(object sender, RoutedEventArgs e)
+        {
+            commands.Command_1();
+        }
+
+        private void ButtonAction_3(object sender, RoutedEventArgs e)
         {
             commands.Command_1();
         }
