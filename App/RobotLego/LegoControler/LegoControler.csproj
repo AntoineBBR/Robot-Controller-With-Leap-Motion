@@ -64,6 +64,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="BoolToColorConverter.cs" />
+    <Compile Include="Commands.cs" />
+    <Compile Include="Manager.cs" />
+    <Compile Include="Ports.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:LegoControler"
         xmlns:ev3="clr-namespace:AsyncEV3MotorCommandsLib;assembly=AsyncEV3MotorCommandsLib"
         mc:Ignorable="d" Closing="root_Closing" Loaded="root_Loaded"
-        Title="MainWindow" Height="350" Width="525" x:Name="root">
+        Title="MainWindow" Height="400" Width="600" x:Name="root">
 
     <Window.Resources>
         <ev3:InputPortToVisibilityConverter x:Key="inputPortToVisiblityConverter"/>
@@ -29,6 +29,16 @@
         <Button Margin="0,0,0,5" Content="Moteur B" Click="Button_Click_1" IsEnabled="{Binding PortBConnected}"/>
         <Button Margin="0,0,0,5" Content="Moteur C" Click="Button_Click_1" IsEnabled="{Binding PortCConnected}"/>
         <Button Margin="0,0,0,5" Content="Moteur D" Click="Button_Click_1" IsEnabled="{Binding PortDConnected}"/>
+
+        <Button Margin="0,0,0,5" Content="Action 1" Click="ButtonAction_1" IsEnabled="{Binding PortAConnected}"/>
+
+        <Button Margin="0,0,0,5" Content="Avancer FULL" Click="ButtonAction_ForwardFull" IsEnabled="{Binding PortAConnected}"/>
+        <Button Margin="0,0,0,5" Content="Avancer HALF" Click="ButtonAction_ForwardHalf" IsEnabled="{Binding PortAConnected}"/>
+
+        <Button Margin="0,0,0,5" Content="Vitesse variable" Click="Action_Test_1"/>
+
+        <Button Margin="0,0,0,5" Content="ARRET D'URGENCE" Click="ButtonAction_EmergencyStop"/>
+
         <Rectangle Width="500" HorizontalAlignment="Center" Height="1" Fill="Black" Margin="10"/>
         <ContentControl Content="{Binding InputPort1}" ContentTemplate="{StaticResource inputPortTemplate}" HorizontalAlignment="Center" Visibility="{Binding InputPort1, Converter={StaticResource inputPortToVisiblityConverter}}"/>
         <ContentControl Content="{Binding InputPort2}" ContentTemplate="{StaticResource inputPortTemplate}" HorizontalAlignment="Center" Visibility="{Binding InputPort2, Converter={StaticResource inputPortToVisiblityConverter}}"/>
