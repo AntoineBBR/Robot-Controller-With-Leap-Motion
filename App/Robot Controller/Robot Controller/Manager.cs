@@ -49,6 +49,7 @@ namespace Robot_Controller
         private void Boucle()
         {
             IEnumerable<HandLeap> hands = new List<HandLeap>(HlManager.Hands);
+
             foreach (var hand in hands)
             {
                 if (hands.Count() != 0 && hand.Side == "R")
@@ -62,8 +63,7 @@ namespace Robot_Controller
                     }
                     else
                     {
-                        calculateurDeplacement.ListeCommande.Clear();
-                        calculateurDeplacement.Vitesse = 0;
+                        calculateurDeplacement.Reset();
                     }
                 }
             }

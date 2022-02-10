@@ -11,11 +11,19 @@ namespace Robot_Controller
         public int Vitesse { get; set; }
         private Leap.Vector relativePosition;
         private static int marge = 60;
+        private static int margeY = 50;
 
         public CalculateurDeplacement()
         {
             ListeCommande = new List<Commande>();
             relativePosition = new Leap.Vector();
+        }
+
+
+        public void Reset()
+        {
+            ListeCommande.Clear();
+            Vitesse = 0;
         }
 
 
@@ -83,9 +91,23 @@ namespace Robot_Controller
         {
             relativePosition = actualPosition.PalmPosition - startPosition.PalmPosition;
 
-            Vitesse = (int)relativePosition.y/2 + 50;
+            if(relativePosition.y > margeY)
+            {
+                Vitesse = (int)relativePosition.y / 2 + 50 - margeY/2;
+            }
 
-            if (Vitesse < 20) Vitesse = 20;
+            if(relativePosition.y < -margeY)
+            {
+                Vitesse = (int)relativePosition.y / 2 + 50 + margeY/2;
+            }
+
+            if(relativePosition.y <= margeY && relativePosition.y >= -margeY)
+            {
+                Vitesse = 50;
+            }
+
+
+            if (Vitesse < 10) Vitesse = 10;
             if (Vitesse > 100) Vitesse = 100;
         }
     }
