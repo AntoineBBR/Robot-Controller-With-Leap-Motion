@@ -51,40 +51,31 @@ namespace LegoControler
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.D, power);
         }
 
-        public async void MoveCombinedXYLeft(int power)
+        public async void MoveDiagonal2(int power)
         {
             // TODO: Faire la mise au point pour gérer le sens d'avancement
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.A, power);
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.B, 0);
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.C, 0);
-            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.D, power);
+            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.D, -power);
         }
 
-        public async void MoveCombinedXYRight(int power)
+        public async void MoveDiagonal1(int power)
         {
             // TODO: Faire la mise au point pour gérer le sens d'avancement
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.A, 0);
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.B, power);
-            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.C, power);
+            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.C, -power);
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.D, 0);
         }
 
-        public async void TurnLeft(int power)
+        public async void Turn(int power)
         {
             // TODO: Faire la mise au point pour gérer le sens d'avancement
-            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.A, power);
+            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.A, -power);
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.B, power);
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.C, power);
-            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.D, power);
-        }
-
-        public async void TurnRight(int power)
-        {
-            // TODO: Faire la mise au point pour gérer le sens d'avancement
-            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.A, power);
-            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.B, power);
-            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.C, power);
-            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.D, power);
+            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.D, -power);
         }
 
 

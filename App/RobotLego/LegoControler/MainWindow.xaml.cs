@@ -83,17 +83,13 @@ namespace LegoControler
 
         private void ButtonAction_Forward(object sender, RoutedEventArgs e)
         {
-            commands.MoveLinearX(100);
+            commands.MoveLinearX(50);
         }
 
         private void ButtonAction_Backward(object sender, RoutedEventArgs e)
         {
-            commands.MoveLinearX(-100);
+            commands.MoveLinearX(-50);
         }
-
-
-
-        // ------------------ A TESTER ------------------ //
 
         private void ButtonAction_Left(object sender, RoutedEventArgs e)
         {
@@ -110,37 +106,38 @@ namespace LegoControler
         private void ButtonAction_UpLeft(object sender, RoutedEventArgs e)
         {
             // TODO: Faire la mise au point
-            commands.MoveCombinedXYLeft(100);
+            commands.MoveDiagonal1(50);
         }
 
         private void ButtonAction_UpRight(object sender, RoutedEventArgs e)
         {
             // TODO: Faire la mise au point
-            commands.MoveCombinedXYRight(100);
+            commands.MoveDiagonal2(50);
         }
 
         private void ButtonAction_DownLeft(object sender, RoutedEventArgs e)
         {
             // TODO: Faire la mise au point
-            commands.MoveCombinedXYLeft(-100);
+            commands.MoveDiagonal2(-50);
         }
 
         private void ButtonAction_DownRight(object sender, RoutedEventArgs e)
         {
             // TODO: Faire la mise au point
-            commands.MoveCombinedXYRight(-100);
+            commands.MoveDiagonal1(-50);
         }
+
 
         private void ButtonAction_TurnLeft(object sender, RoutedEventArgs e)
         {
             // TODO: Faire la mise au point
-            commands.TurnLeft(50);
+            commands.Turn(50);
         }
 
         private void ButtonAction_TurnRight(object sender, RoutedEventArgs e)
         {
             // TODO: Faire la mise au point
-            commands.TurnRight(50);
+            commands.Turn(-50);
         }
 
 
