@@ -29,8 +29,11 @@
         <Button Margin="0,0,0,5" Content="Moteur C" Click="Button_Click_1" IsEnabled="{Binding PortCConnected}"/>
         <Button Margin="0,0,0,5" Content="Moteur D" Click="Button_Click_1" IsEnabled="{Binding PortDConnected}"/>
 
-        <Grid Margin="0,10,0,0">
+        <Grid Margin="0,10,0,10">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -40,41 +43,37 @@
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Button Grid.Column="1" Grid.Row="0" Margin="5" Content="AVANCER" Click="ButtonAction_Forward"/>
-            <Button Grid.Column="1" Grid.Row="2" Margin="5" Content="RECULER" Click="ButtonAction_Backward"/>
+            <Button Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="0" Margin="5" Content="AVANCER" Click="ButtonAction_Forward"/>
+            <Button Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="2" Margin="5" Content="RECULER" Click="ButtonAction_Backward"/>
 
-            <Button Grid.Column="0" Grid.Row="1" Margin="5" Content="GAUCHE" Click="ButtonAction_Left"/>
-            <Button Grid.Column="2" Grid.Row="1" Margin="5" Content="DROITE" Click="ButtonAction_Right"/>
+            <Button Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Margin="5" Content="GAUCHE" Click="ButtonAction_Left"/>
+            <Button Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="1" Margin="5" Content="DROITE" Click="ButtonAction_Right"/>
 
-            <Button Grid.Column="0" Grid.Row="0" Margin="5" Content="HAUT GAUCHE" Click="ButtonAction_UpLeft"/>
-            <Button Grid.Column="2" Grid.Row="0" Margin="5" Content="HAUT DROIT" Click="ButtonAction_UpRight"/>
+            <Button Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Margin="5" Content="HAUT GAUCHE" Click="ButtonAction_UpLeft"/>
+            <Button Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="0" Margin="5" Content="HAUT DROIT" Click="ButtonAction_UpRight"/>
 
-            <Button Grid.Column="0" Grid.Row="2" Margin="5" Content="BAS GAUCHE" Click="ButtonAction_DownLeft"/>
-            <Button Grid.Column="2" Grid.Row="2" Margin="5" Content="BAS DROIT" Click="ButtonAction_DownRight"/>
+            <Button Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Margin="5" Content="BAS GAUCHE" Click="ButtonAction_DownLeft"/>
+            <Button Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="2" Margin="5" Content="BAS DROIT" Click="ButtonAction_DownRight"/>
 
-            <Button Grid.Column="1" Grid.Row="1" Margin="5" Content="ARRET D'URGENCE" Click="ButtonAction_EmergencyStop"/>
+            <Button Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3" Margin="5" Content="TOURNER A GAUCHE" Click="ButtonAction_TurnLeft"/>
+            <Button Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="3" Margin="5" Content="TOURNER A DROITE" Click="ButtonAction_TurnRight"/>
 
-            <Slider Grid.Column="3" Grid.RowSpan="3" 
+            <Button Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1" Margin="5" Content="ARRET D'URGENCE" Click="ButtonAction_EmergencyStop"/>
+
+            <Slider Grid.Column="6" Grid.RowSpan="4" 
                     HorizontalAlignment="Center" Margin="5"
                     Minimum="0" Maximum="100"
                     SmallChange="1" LargeChange="10"
                     TickPlacement="BottomRight" TickFrequency="10"
                     Orientation="Vertical" />
         </Grid>
-        <Grid Margin="0,0,0,10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            
-            <Button Grid.Column="0" Margin="5" Content="TOURNER A GAUCHE" Click="ButtonAction_TurnLeft"/>
-            <Button Grid.Column="1" Margin="5" Content="TOURNER A DROITE" Click="ButtonAction_TurnRight"/>
-        </Grid>
 
-        <Button Margin="0,0,0,5" Content="Action 1" Click="ButtonAction_1" IsEnabled="{Binding PortAConnected}"/>
+        <Button Margin="0,0,0,5" Content="Action 1" Click="ButtonAction_1"/>
+        <Button Margin="0,0,0,5" Content="Action 2" Click="ButtonAction_2"/>
+        <Button Margin="0,0,0,5" Content="Action 3" Click="ButtonAction_3"/>
 
         <Rectangle Width="500" HorizontalAlignment="Center" Height="1" Fill="Black" Margin="10"/>
         <ContentControl Content="{Binding InputPort1}" ContentTemplate="{StaticResource inputPortTemplate}" HorizontalAlignment="Center" Visibility="{Binding InputPort1, Converter={StaticResource inputPortToVisiblityConverter}}"/>
