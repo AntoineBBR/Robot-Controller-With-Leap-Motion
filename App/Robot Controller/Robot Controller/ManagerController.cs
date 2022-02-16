@@ -6,17 +6,20 @@ using System.Timers;
 
 namespace Robot_Controller
 {
-    class Manager
+    class ManagerController
     {
 
         private HandLeapManager HlManager;
         private CalculateurDeplacement calculateurDeplacement;
         private Leap.Controller ctrl;
         private Timer timer;
+        private bool debug;
 
 
-        public Manager()
+        public ManagerController(bool debug)
         {
+            this.debug = debug;
+
             ctrl = new Leap.Controller();
             ctrl.FrameReady += Ctrl_FrameReady;
             ctrl.StartConnection();
@@ -71,8 +74,7 @@ namespace Robot_Controller
 
 
 
-
-            AffichageCommande();
+            if(debug) AffichageCommande();
         }
 
 
@@ -81,13 +83,13 @@ namespace Robot_Controller
             if (hand.GrabStrength == 1 && !HlManager.IsStartPositionLock)
             {
                 HlManager.SetAllStartPosition(hand);
-                Console.WriteLine("positionLock");
+                if(debug) Console.WriteLine("positionLock");
             }
             if (hand.GrabStrength == 0 && HlManager.IsStartPositionLock)
             {
                 HlManager.SetAllStartPosition(null);
                 calculateurDeplacement.ListeCommande.Clear();
-                Console.WriteLine("positionUnLock");
+                if (debug) Console.WriteLine("positionUnLock");
             }
         }
 

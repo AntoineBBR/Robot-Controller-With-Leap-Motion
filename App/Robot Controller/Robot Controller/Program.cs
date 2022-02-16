@@ -9,13 +9,13 @@ namespace Robot_Controller
 {
     class Program
     {
-        private static Manager manager;
+        private static ManagerController manager;
 
 
 
         static void Main(string[] args)
         {
-            manager = new Manager();
+            manager = new ManagerController(false);
             manager.Detection();
         }
 
