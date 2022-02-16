@@ -65,6 +65,7 @@ namespace LegoControler
         // ----------------------------------------------------------------------------------------------------------------------------------------------- //
         // ----------------------------------------------------------------------------------------------------------------------------------------------- //
 
+        private int power = 75;
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
@@ -83,61 +84,61 @@ namespace LegoControler
 
         private void ButtonAction_Forward(object sender, RoutedEventArgs e)
         {
-            commands.MoveLinearX(50);
+            commands.MoveLinearX(power);
         }
 
         private void ButtonAction_Backward(object sender, RoutedEventArgs e)
         {
-            commands.MoveLinearX(-50);
+            commands.MoveLinearX(-power);
         }
 
         private void ButtonAction_Left(object sender, RoutedEventArgs e)
         {
             // TODO: Faire la mise au point
-            commands.MoveLinearY(50);
+            commands.MoveLinearY(power);
         }
 
         private void ButtonAction_Right(object sender, RoutedEventArgs e)
         {
             // TODO: Faire la mise au point
-            commands.MoveLinearY(-50);
+            commands.MoveLinearY(-power);
         }
 
         private void ButtonAction_UpLeft(object sender, RoutedEventArgs e)
         {
             // TODO: Faire la mise au point
-            commands.MoveDiagonal1(50);
+            commands.MoveDiagonal1(power);
         }
 
         private void ButtonAction_UpRight(object sender, RoutedEventArgs e)
         {
             // TODO: Faire la mise au point
-            commands.MoveDiagonal2(50);
+            commands.MoveDiagonal2(power);
         }
 
         private void ButtonAction_DownLeft(object sender, RoutedEventArgs e)
         {
             // TODO: Faire la mise au point
-            commands.MoveDiagonal2(-50);
+            commands.MoveDiagonal2(-power);
         }
 
         private void ButtonAction_DownRight(object sender, RoutedEventArgs e)
         {
             // TODO: Faire la mise au point
-            commands.MoveDiagonal1(-50);
+            commands.MoveDiagonal1(-power);
         }
 
 
         private void ButtonAction_TurnLeft(object sender, RoutedEventArgs e)
         {
             // TODO: Faire la mise au point
-            commands.Turn(50);
+            commands.Turn(power);
         }
 
         private void ButtonAction_TurnRight(object sender, RoutedEventArgs e)
         {
             // TODO: Faire la mise au point
-            commands.Turn(-50);
+            commands.Turn(-power);
         }
 
 
