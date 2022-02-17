@@ -111,7 +111,7 @@
       <Project>{79c444de-86f1-4aff-903a-4b6ed31655ea}</Project>
       <Name>Lego.Ev3.Desktop</Name>
     </ProjectReference>
-    <ProjectReference Include="..\RobotControlerLib\RobotControllerLib.csproj">
+    <ProjectReference Include="..\RobotControllerLib\RobotControllerLib.csproj">
       <Project>{b7ea2eb7-f19c-420b-bdaf-c50db73d7d0f}</Project>
       <Name>RobotControllerLib</Name>
     </ProjectReference>

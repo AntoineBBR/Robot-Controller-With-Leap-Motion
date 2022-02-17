@@ -13,9 +13,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{6A03B072-CE1
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{A27AB1CD-0F77-47BE-8D7C-60F663D4C7FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegoController", "LegoControler\LegoController.csproj", "{E614915B-16F4-4676-BA61-40D5806AFF1A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegoController", "LegoController\LegoController.csproj", "{E614915B-16F4-4676-BA61-40D5806AFF1A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobotControllerLib", "RobotControlerLib\RobotControllerLib.csproj", "{B7EA2EB7-F19C-420B-BDAF-C50DB73D7D0F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobotControllerLib", "RobotControllerLib\RobotControllerLib.csproj", "{B7EA2EB7-F19C-420B-BDAF-C50DB73D7D0F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
