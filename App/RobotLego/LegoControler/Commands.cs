@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace LegoControler
 {
-    class Commands
+    public class Commands
     {
         private BrickManager brickManager = Manager.brickManager;
         private Dictionary<char, OutputPort> ports = Ports.ports;
@@ -26,8 +26,7 @@ namespace LegoControler
 
         public async void EmergencyStop()
         {
-            // Trouver comment arrêter seulement les port connectés
-            // Surement un for avec une condition mais pas sûr que ça soit mieux niveau performance
+            // Arrêt de tous les moteurs
             await brickManager.DirectCommand.StopMotorAsync(InputPort.A);
             await brickManager.DirectCommand.StopMotorAsync(InputPort.B);
             await brickManager.DirectCommand.StopMotorAsync(InputPort.C);
@@ -36,6 +35,7 @@ namespace LegoControler
 
         public async void MoveLinearX(int power)
         {
+            // Avancement sur l'axe X (forward / backward)
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.A, power);
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.B, power);
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.C, -power);
@@ -44,34 +44,35 @@ namespace LegoControler
 
         public async void MoveLinearY(int power)
         {
-            // TODO: Faire la mise au point pour gérer le sens d'avancement
+            // Avancement sur l'axe Y (left / right)
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.A, -power);
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.B, power);
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.C, -power);
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.D, power);
         }
 
-        public async void MoveDiagonal2(int power)
-        {
-            // TODO: Faire la mise au point pour gérer le sens d'avancement
-            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.A, power);
-            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.B, 0);
-            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.C, 0);
-            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.D, -power);
-        }
-
         public async void MoveDiagonal1(int power)
         {
-            // TODO: Faire la mise au point pour gérer le sens d'avancement
+            // Avancement sur la diagonale (up right / down left)
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.A, 0);
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.B, power);
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.C, -power);
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.D, 0);
         }
 
+        public async void MoveDiagonal2(int power)
+        {
+            // Avancement sur la diagonale (up left / down right)
+            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.A, power);
+            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.B, 0);
+            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.C, 0);
+            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.D, -power);
+        }
+
+
         public async void Turn(int power)
         {
-            // TODO: Faire la mise au point pour gérer le sens d'avancement
+            // Rotation (left / right)
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.A, -power);
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.B, power);
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.C, power);
@@ -82,7 +83,7 @@ namespace LegoControler
 
 
 
-        // ------------------------- Commandes Personnalisés ------------------------- //
+        // ------------------------- Commandes Personnalisées ------------------------- //
 
         public async void Command_1()
         {

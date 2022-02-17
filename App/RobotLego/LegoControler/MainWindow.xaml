@@ -24,10 +24,10 @@
     </Window.Resources>
 
     <StackPanel Margin="5">
-        <Button Margin="0,0,0,5" Content="Moteur A" Click="Button_Click_1" IsEnabled="{Binding PortAConnected}"/>
-        <Button Margin="0,0,0,5" Content="Moteur B" Click="Button_Click_1" IsEnabled="{Binding PortBConnected}"/>
-        <Button Margin="0,0,0,5" Content="Moteur C" Click="Button_Click_1" IsEnabled="{Binding PortCConnected}"/>
-        <Button Margin="0,0,0,5" Content="Moteur D" Click="Button_Click_1" IsEnabled="{Binding PortDConnected}"/>
+        <Button Margin="0,0,0,5" Content="Test Moteur A" Click="Button_Click_1" IsEnabled="{Binding PortAConnected}"/>
+        <Button Margin="0,0,0,5" Content="Test Moteur B" Click="Button_Click_1" IsEnabled="{Binding PortBConnected}"/>
+        <Button Margin="0,0,0,5" Content="Test Moteur C" Click="Button_Click_1" IsEnabled="{Binding PortCConnected}"/>
+        <Button Margin="0,0,0,5" Content="Test Moteur D" Click="Button_Click_1" IsEnabled="{Binding PortDConnected}"/>
 
         <Grid Margin="0,10,0,10">
             <Grid.ColumnDefinitions>
