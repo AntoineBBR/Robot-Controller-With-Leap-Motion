@@ -3,13 +3,13 @@ using Lego.Ev3.Core;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace LegoController
+namespace RobotController
 {
     public class Commands
     {
         private BrickManager brickManager = Manager.brickManager;
-        private Dictionary<char, OutputPort> ports = Ports.ports;
-        private Dictionary<char, InputPort> inputPorts = Ports.inputPorts;
+        public Dictionary<char, OutputPort> ports = Ports.ports;
+        public Dictionary<char, InputPort> inputPorts = Ports.inputPorts;
 
 
         public async void MotorTest(char port)

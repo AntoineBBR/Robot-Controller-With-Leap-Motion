@@ -4,6 +4,7 @@ using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using RobotController;
 
 namespace LegoController
 {
@@ -12,8 +13,8 @@ namespace LegoController
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Commands commands = new Commands();
         private BrickManager brickManager = Manager.brickManager;
-        private Commands commands = Manager.commands;
 
         private BluetoothDevice selectedDevice;
         event EventHandler DeviceSelected;

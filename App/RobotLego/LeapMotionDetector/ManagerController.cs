@@ -1,22 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Timers;
+using RobotController;
 
-namespace RobotController
+namespace LeapMotionDetector
 {
-    class ManagerControler
+    class ManagerController
     {
 
         private HandLeapManager HlManager;
-        private CalculateurDeplacement calculateurDeplacement;
+        private DirectionCalculator directionCalculator;
         private Leap.Controller ctrl;
         private Timer timer;
         private bool debug;
 
 
-        public ManagerControler(bool debug)
+        public ManagerController(bool debug)
         {
             this.debug = debug;
 
@@ -25,7 +25,7 @@ namespace RobotController
             ctrl.StartConnection();
 
             HlManager = new HandLeapManager();
-            calculateurDeplacement = new CalculateurDeplacement();
+            directionCalculator = new DirectionCalculator();
 
             //Définir la fonction qui tourne en boucle dans un second thread
             timer = new Timer(100);
@@ -46,9 +46,6 @@ namespace RobotController
         }
 
 
-
-
-
         private void Boucle()
         {
             IEnumerable<HandLeap> hands = new List<HandLeap>(HlManager.Hands);
@@ -60,20 +57,16 @@ namespace RobotController
                     DetectionSurMainDroite(hand);
                     if (HlManager.IsStartPositionLock)
                     {
-                        calculateurDeplacement.CalculDeplacementQuatreAxe(HlManager.StartPosition, hand);
-                        calculateurDeplacement.CalculRotation(hand);
-                        calculateurDeplacement.CalculVitesse(HlManager.StartPosition, hand);
+                        directionCalculator.CalculDeplacementQuatreAxe(HlManager.StartPosition, hand);
+                        directionCalculator.CalculRotation(hand);
+                        directionCalculator.CalculVitesse(HlManager.StartPosition, hand);
                     }
                     else
                     {
-                        calculateurDeplacement.Reset();
+                        directionCalculator.Reset();
                     }
                 }
             }
-
-
-
-
             if (debug) AffichageCommande();
         }
 
@@ -88,7 +81,7 @@ namespace RobotController
             if (hand.GrabStrength == 0 && HlManager.IsStartPositionLock)
             {
                 HlManager.SetAllStartPosition(null);
-                calculateurDeplacement.ListeCommande.Clear();
+                directionCalculator.ListeDirection.Clear();
                 if (debug) Console.WriteLine("positionUnLock");
             }
         }
@@ -123,9 +116,9 @@ namespace RobotController
         {
             Console.Clear();
 
-            Console.WriteLine(calculateurDeplacement.Vitesse);
+            Console.WriteLine(directionCalculator.Vitesse);
 
-            foreach (Commande c in calculateurDeplacement.ListeCommande)
+            foreach (Direction c in directionCalculator.ListeDirection)
             {
                 Console.WriteLine(c);
             }

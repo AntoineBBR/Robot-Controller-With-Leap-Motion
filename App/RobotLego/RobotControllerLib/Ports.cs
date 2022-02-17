@@ -1,9 +1,9 @@
 ﻿using Lego.Ev3.Core;
 using System.Collections.Generic;
 
-namespace LegoController
+namespace RobotController
 {
-    class Ports
+    public class Ports
     {
         public static Dictionary<char, OutputPort> ports = new Dictionary<char, OutputPort>()
         {

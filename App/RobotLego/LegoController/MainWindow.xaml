@@ -68,7 +68,7 @@
                     Minimum="0" Maximum="100"
                     SmallChange="1" LargeChange="10"
                     TickPlacement="BottomRight" TickFrequency="10"
-                    Orientation="Vertical" />
+                    Orientation="Vertical" Value="50"/>
         </Grid>
 
         <Button Margin="0,0,0,5" Content="Action 1" Click="ButtonAction_1" IsEnabled="{Binding AllPortConnected}"/>

@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace RobotController
 {
-    class HandLeap : IEquatable<HandLeap>
+    public class HandLeap : IEquatable<HandLeap>
     {
         public int Id { get; set; }
 

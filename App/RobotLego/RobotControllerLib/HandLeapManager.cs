@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace RobotController
 {
-    class HandLeapManager
+    public class HandLeapManager
     {
         public HashSet<HandLeap> Hands { get => hands; set => hands = value; }
         private HashSet<HandLeap> hands = new HashSet<HandLeap>();

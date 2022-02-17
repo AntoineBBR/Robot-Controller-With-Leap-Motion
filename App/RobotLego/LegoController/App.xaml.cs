@@ -13,6 +13,6 @@ namespace LegoController
     /// </summary>
     public partial class App : Application
     {
-        private Manager manager = new Manager();
+
     }
 }

@@ -72,6 +72,9 @@ namespace AsyncEV3MotorCommandsLib
         }
         private bool portDConnected = false;
 
+        /// <summary>
+        /// Made my Valentin
+        /// </summary>
         public bool AllPortConnected
         {
             get { return allPortConnected; }
@@ -79,6 +82,9 @@ namespace AsyncEV3MotorCommandsLib
         }
         private bool allPortConnected = false;
 
+        /// <summary>
+        /// Made my Valentin
+        /// </summary>
         public bool AlmostOnePortConnected
         {
             get { return almostOnePortConnected; }
