@@ -3,7 +3,7 @@ using Lego.Ev3.Core;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace LegoControler
+namespace LegoController
 {
     public class Commands
     {

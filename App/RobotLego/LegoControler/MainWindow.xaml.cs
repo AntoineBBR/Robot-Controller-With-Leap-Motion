@@ -5,7 +5,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace LegoControler
+namespace LegoController
 {
     /// <summary>
     /// Logique d'interaction pour MainWindow.xaml

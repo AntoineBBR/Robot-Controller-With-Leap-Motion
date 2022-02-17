@@ -1,6 +1,7 @@
 ﻿using AsyncEV3MotorCommandsLib;
+using RobotController;
 
-namespace LegoControler
+namespace LegoController
 {
     class Manager
     {

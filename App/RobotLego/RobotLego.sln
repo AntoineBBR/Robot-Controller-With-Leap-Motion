@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.32112.339
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32126.315
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluetoothDevicesScanner", "BluetoothDevicesScanner\BluetoothDevicesScanner.csproj", "{E8A49EEA-15DA-4728-BF44-1FB53C907BD1}"
 EndProject
@@ -13,7 +13,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{6A03B072-CE1
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{A27AB1CD-0F77-47BE-8D7C-60F663D4C7FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegoControler", "LegoControler\LegoControler.csproj", "{E614915B-16F4-4676-BA61-40D5806AFF1A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegoController", "LegoControler\LegoController.csproj", "{E614915B-16F4-4676-BA61-40D5806AFF1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobotControllerLib", "RobotControlerLib\RobotControllerLib.csproj", "{B7EA2EB7-F19C-420B-BDAF-C50DB73D7D0F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,10 @@ Global
 		{E614915B-16F4-4676-BA61-40D5806AFF1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E614915B-16F4-4676-BA61-40D5806AFF1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E614915B-16F4-4676-BA61-40D5806AFF1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7EA2EB7-F19C-420B-BDAF-C50DB73D7D0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7EA2EB7-F19C-420B-BDAF-C50DB73D7D0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7EA2EB7-F19C-420B-BDAF-C50DB73D7D0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7EA2EB7-F19C-420B-BDAF-C50DB73D7D0F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +52,7 @@ Global
 		{1FC249EA-969D-469E-BED0-BB25A2EA0D5B} = {A27AB1CD-0F77-47BE-8D7C-60F663D4C7FD}
 		{79C444DE-86F1-4AFF-903A-4B6ED31655EA} = {A27AB1CD-0F77-47BE-8D7C-60F663D4C7FD}
 		{E614915B-16F4-4676-BA61-40D5806AFF1A} = {6A03B072-CE12-4FA2-AB38-59985ABB27C2}
+		{B7EA2EB7-F19C-420B-BDAF-C50DB73D7D0F} = {A27AB1CD-0F77-47BE-8D7C-60F663D4C7FD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9FAA8052-038A-445E-8B99-EF67DAD3F84A}

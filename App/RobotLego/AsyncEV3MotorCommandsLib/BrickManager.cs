@@ -72,6 +72,19 @@ namespace AsyncEV3MotorCommandsLib
         }
         private bool portDConnected = false;
 
+        public bool AllPortConnected
+        {
+            get { return allPortConnected; }
+            set { allPortConnected = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("AllPortConnected")); }
+        }
+        private bool allPortConnected = false;
+
+        public bool AlmostOnePortConnected
+        {
+            get { return almostOnePortConnected; }
+            set { almostOnePortConnected = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("AlmostOnePortConnected")); }
+        }
+        private bool almostOnePortConnected = false;
 
 
         private Port[] inputPorts;
@@ -261,6 +274,8 @@ namespace AsyncEV3MotorCommandsLib
                 PortBConnected = await Brick.DirectCommand.ReadyRawAsync(InputPort.B, 0) != int.MinValue;
                 PortCConnected = await Brick.DirectCommand.ReadyRawAsync(InputPort.C, 0) != int.MinValue;
                 PortDConnected = await Brick.DirectCommand.ReadyRawAsync(InputPort.D, 0) != int.MinValue;
+                AllPortConnected = PortAConnected && PortBConnected && PortCConnected && PortDConnected;
+                AlmostOnePortConnected = PortAConnected || PortBConnected || PortCConnected || PortDConnected;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("InputPorts"));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("InputPort1"));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("InputPort2"));
