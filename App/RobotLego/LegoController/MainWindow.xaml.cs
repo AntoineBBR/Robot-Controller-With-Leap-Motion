@@ -4,7 +4,6 @@ using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using RobotController;
 
 namespace LegoController
 {
@@ -154,7 +153,7 @@ namespace LegoController
 
         private void ButtonAction_2(object sender, RoutedEventArgs e)
         {
-            commands.Command_1();
+            commands.Command_2(power);
         }
 
         private void ButtonAction_3(object sender, RoutedEventArgs e)

@@ -1,7 +1,7 @@
 ﻿using Lego.Ev3.Core;
 using System.Collections.Generic;
 
-namespace RobotController
+namespace LegoController
 {
     public class Ports
     {

@@ -3,7 +3,7 @@ using Lego.Ev3.Core;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace RobotController
+namespace LegoController
 {
     public class Commands
     {
@@ -92,6 +92,14 @@ namespace RobotController
             await Task.Delay(2000);
             await brickManager.DirectCommand.StopMotorAsync(InputPort.A);
             await brickManager.DirectCommand.StopMotorAsync(InputPort.B);
+        }
+
+        public async void Command_2(int power)
+        {
+            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.A, power / 2);
+            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.B, power);
+            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.C, -power);
+            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.D, power / 2);
         }
     }
 }
