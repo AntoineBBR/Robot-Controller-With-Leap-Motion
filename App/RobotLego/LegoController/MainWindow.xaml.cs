@@ -13,6 +13,7 @@ namespace LegoController
     /// </summary>
     public partial class MainWindow : Window
     {
+
         private Commands commands = Manager.commands;
         private BrickManager brickManager = Manager.brickManager;
 
