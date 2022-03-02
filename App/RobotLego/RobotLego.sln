@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegoController", "LegoController\LegoController.csproj", "{E614915B-16F4-4676-BA61-40D5806AFF1A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobotControllerLib", "RobotControllerLib\RobotControllerLib.csproj", "{073ECB60-57D5-4406-8FFC-4094805AB9E1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{E614915B-16F4-4676-BA61-40D5806AFF1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E614915B-16F4-4676-BA61-40D5806AFF1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E614915B-16F4-4676-BA61-40D5806AFF1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{073ECB60-57D5-4406-8FFC-4094805AB9E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{073ECB60-57D5-4406-8FFC-4094805AB9E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{073ECB60-57D5-4406-8FFC-4094805AB9E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{073ECB60-57D5-4406-8FFC-4094805AB9E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +52,7 @@ Global
 		{1FC249EA-969D-469E-BED0-BB25A2EA0D5B} = {A27AB1CD-0F77-47BE-8D7C-60F663D4C7FD}
 		{79C444DE-86F1-4AFF-903A-4B6ED31655EA} = {A27AB1CD-0F77-47BE-8D7C-60F663D4C7FD}
 		{E614915B-16F4-4676-BA61-40D5806AFF1A} = {6A03B072-CE12-4FA2-AB38-59985ABB27C2}
+		{073ECB60-57D5-4406-8FFC-4094805AB9E1} = {A27AB1CD-0F77-47BE-8D7C-60F663D4C7FD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9FAA8052-038A-445E-8B99-EF67DAD3F84A}
