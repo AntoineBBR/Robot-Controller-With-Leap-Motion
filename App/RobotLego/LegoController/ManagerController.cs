@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Timers;
+using RobotControllerLib;
 
-namespace RobotControllerLib
+namespace LegoController
 {
     public class ManagerController
     {
-
         private HandLeapManager HlManager;
         private CalculateurDeplacement calculateurDeplacement;
         private Leap.Controller ctrl;
@@ -39,14 +37,11 @@ namespace RobotControllerLib
             timer.Start();
 
             //attente d'une entrée dans la console pour terminer le programme
-            Console.ReadLine();
+            //Console.ReadLine();
             timer.Stop();
             ctrl.StopConnection();
-            Console.WriteLine("Capteur déconnecté");
+            //Console.WriteLine("Capteur déconnecté");
         }
-
-
-
 
 
         private void Boucle()
@@ -70,11 +65,7 @@ namespace RobotControllerLib
                     }
                 }
             }
-
-
-
-
-            if (debug) AffichageCommande();
+            //if (debug) AffichageCommande();
         }
 
 
@@ -83,18 +74,18 @@ namespace RobotControllerLib
             if (hand.GrabStrength == 1 && !HlManager.IsStartPositionLock)
             {
                 HlManager.SetAllStartPosition(hand);
-                if (debug) Console.WriteLine("positionLock");
+                //if (debug) Console.WriteLine("positionLock");
             }
             if (hand.GrabStrength == 0 && HlManager.IsStartPositionLock)
             {
                 HlManager.SetAllStartPosition(null);
                 calculateurDeplacement.ListeCommande.Clear();
-                if (debug) Console.WriteLine("positionUnLock");
+                //if (debug) Console.WriteLine("positionUnLock");
             }
         }
 
 
-        private void AffichageMain(IEnumerable<HandLeap> hands)
+        /*private void AffichageMain(IEnumerable<HandLeap> hands)
         {
             Console.Clear();
 
@@ -104,7 +95,6 @@ namespace RobotControllerLib
             }
             else
             {
-
                 Console.Write("Start Position : ");
                 if (HlManager.IsStartPositionLock) Console.WriteLine(HlManager.StartPosition.PalmPosition);
                 else Console.WriteLine("null");
@@ -115,11 +105,9 @@ namespace RobotControllerLib
                     Console.WriteLine(hand.Rotation);
                 }
             }
+        }*/
 
-        }
-
-
-        private void AffichageCommande()
+        /*private void AffichageCommande()
         {
             Console.Clear();
 
@@ -129,11 +117,7 @@ namespace RobotControllerLib
             {
                 Console.WriteLine(c);
             }
-        }
-
-
-
-
+        }*/
 
         private void Ctrl_FrameReady(object sender, Leap.FrameEventArgs e)
         {
@@ -144,6 +128,5 @@ namespace RobotControllerLib
                 HlManager.Hands.Add(h);
             }
         }
-
     }
 }
