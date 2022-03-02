@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\..\Robot Controller\ext\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\..\Robot Controller\ext\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy /yr &quot;$(ProjectDir)..\ext\LeapC.dll&quot; &quot;$(TargetDir)&quot;&#xA;xcopy /yr &quot;$(ProjectDir)..\ext\UnityEngine.CoreModule.dll&quot; &quot;$(TargetDir)&quot;&#xA;" />
+  </Target>
+
+</Project>

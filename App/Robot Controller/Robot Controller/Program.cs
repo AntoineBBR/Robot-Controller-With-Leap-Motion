@@ -15,7 +15,7 @@ namespace Robot_Controller
 
         static void Main(string[] args)
         {
-            manager = new ManagerController(false);
+            manager = new ManagerController(true);
             manager.Detection();
         }
 

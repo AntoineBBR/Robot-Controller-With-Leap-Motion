@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobotControllerLib", "RobotControllerLib\RobotControllerLib.csproj", "{732E24BB-A85F-4556-9D6C-FF781CEFFF1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestRobotControllerLib", "TestRobotControllerLib\TestRobotControllerLib.csproj", "{63C34CC6-9A76-401D-AF2D-316F0240D666}"
+	ProjectSection(ProjectDependencies) = postProject
+		{732E24BB-A85F-4556-9D6C-FF781CEFFF1E} = {732E24BB-A85F-4556-9D6C-FF781CEFFF1E}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{732E24BB-A85F-4556-9D6C-FF781CEFFF1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{732E24BB-A85F-4556-9D6C-FF781CEFFF1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{732E24BB-A85F-4556-9D6C-FF781CEFFF1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{732E24BB-A85F-4556-9D6C-FF781CEFFF1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63C34CC6-9A76-401D-AF2D-316F0240D666}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63C34CC6-9A76-401D-AF2D-316F0240D666}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63C34CC6-9A76-401D-AF2D-316F0240D666}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63C34CC6-9A76-401D-AF2D-316F0240D666}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F586F2EA-C0AC-47ED-9100-1BB1E271463E}
+	EndGlobalSection
+EndGlobal
