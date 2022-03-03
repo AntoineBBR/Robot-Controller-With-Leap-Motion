@@ -1,6 +1,6 @@
 # Robot Controller with Leap Motion
 
-A simple project to control a LegoV3MindStorms thanks to a Leap Motion
+A simple project to control a `LegoV3MindStorms` thanks to a `Leap Motion`
 
 ## Getting started
 
@@ -48,4 +48,7 @@ How to use the `Leap Motion`
 ## Credits
 
 - Co-author: [Clergue Valentin](https://github.com/HandyS11)
+  
 - Co-author: [Imbert Antoine](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+
+- Professor: [Marc Chevaldonné](https://gitlab.iut-clermont.uca.fr/macheval) (Author of the librairies that make `LegoV3MindStorms` & `Leap Motion` working with C#)
