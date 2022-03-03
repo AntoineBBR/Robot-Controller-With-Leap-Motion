@@ -52,6 +52,7 @@
     <Compile Include="Commandes.cs" />
     <Compile Include="HandLeap.cs" />
     <Compile Include="HandLeapManager.cs" />
+    <Compile Include="ManagerController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

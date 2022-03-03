@@ -1,6 +1,7 @@
 ﻿using AsyncEV3MotorCommandsLib;
 using BluetoothDevicesScanner;
 using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,17 +13,28 @@ namespace LegoController
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Manager manager = new Manager();
         private Commands commands = Manager.commands;
         private BrickManager brickManager = Manager.brickManager;
 
         private BluetoothDevice selectedDevice;
         event EventHandler DeviceSelected;
 
+
         public MainWindow()
         {
             InitializeComponent();
             DataContext = brickManager;
+            manager.LaunchDetection();
         }
+
+
+
+
+
+
+
+
 
         public BluetoothDevice SelectedDevice
         {

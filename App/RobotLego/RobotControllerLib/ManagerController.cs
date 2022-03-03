@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Timers;
-using RobotControllerLib;
 
-namespace LegoController
+namespace RobotControllerLib
 {
     public class ManagerController
     {
@@ -59,6 +59,8 @@ namespace LegoController
                     }
                 }
             }
+
+            Debug.WriteLine(calculateurDeplacement.Vitesse.ToString());
         }
 
 
@@ -85,6 +87,16 @@ namespace LegoController
             {
                 HlManager.Hands.Add(h);
             }
+        }
+
+        public List<Commande> GetListeCommande()
+        {
+            return calculateurDeplacement.ListeCommande;
+        }
+
+        public int GetVitesse()
+        {
+            return calculateurDeplacement.Vitesse;
         }
     }
 }
