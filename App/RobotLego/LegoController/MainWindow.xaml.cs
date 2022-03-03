@@ -4,7 +4,6 @@ using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using RobotControllerLib;
 
 namespace LegoController
 {
@@ -13,7 +12,6 @@ namespace LegoController
     /// </summary>
     public partial class MainWindow : Window
     {
-
         private Commands commands = Manager.commands;
         private BrickManager brickManager = Manager.brickManager;
 

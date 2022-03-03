@@ -6,7 +6,6 @@ namespace RobotControllerLib
 {
     public class CalculateurDeplacement
     {
-
         public List<Commande> ListeCommande { get; set; }
         public int Vitesse { get; set; }
         private Leap.Vector relativePosition;
@@ -19,13 +18,11 @@ namespace RobotControllerLib
             relativePosition = new Leap.Vector();
         }
 
-
         public void Reset()
         {
             ListeCommande.Clear();
             Vitesse = 0;
         }
-
 
         public void CalculDeplacementQuatreAxe(HandLeap startPosition, HandLeap actualPosition)
         {
@@ -64,9 +61,6 @@ namespace RobotControllerLib
             }
         }
 
-
-
-
         public void CalculRotation(HandLeap Position)
         {
             if (Position.Rotation.z > 0.3 && !ListeCommande.Contains(Commande.TOURNERGAUCHE))
@@ -86,7 +80,6 @@ namespace RobotControllerLib
             }
         }
 
-
         public void CalculVitesse(HandLeap startPosition, HandLeap actualPosition)
         {
             relativePosition = actualPosition.PalmPosition - startPosition.PalmPosition;
@@ -105,7 +98,6 @@ namespace RobotControllerLib
             {
                 Vitesse = 50;
             }
-
 
             if (Vitesse < 10) Vitesse = 10;
             if (Vitesse > 100) Vitesse = 100;

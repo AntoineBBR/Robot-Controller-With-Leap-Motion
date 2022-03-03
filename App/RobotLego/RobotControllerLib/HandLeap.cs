@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace RobotControllerLib
 {
@@ -15,8 +13,6 @@ namespace RobotControllerLib
         public string Side { get; set; }
 
         public Leap.LeapQuaternion Rotation { get; set; }
-
-
 
         public HandLeap(int id, Leap.Vector palmPosition, float grabStrength, bool isLeft, Leap.LeapQuaternion rotation)
         {
