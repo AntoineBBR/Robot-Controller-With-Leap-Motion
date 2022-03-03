@@ -13,13 +13,10 @@ namespace RobotControllerLib
         private CalculateurDeplacement calculateurDeplacement;
         private Leap.Controller ctrl;
         private Timer timer;
-        private bool debug;
 
 
-        public ManagerController(bool debug)
+        public ManagerController()
         {
-            this.debug = debug;
-
             ctrl = new Leap.Controller();
             ctrl.FrameReady += Ctrl_FrameReady;
             ctrl.StartConnection();
@@ -39,10 +36,9 @@ namespace RobotControllerLib
             timer.Start();
 
             //attente d'une entrée dans la console pour terminer le programme
-            Console.ReadLine();
+            while (true) { }
             timer.Stop();
             ctrl.StopConnection();
-            Console.WriteLine("Capteur déconnecté");
         }
 
 
@@ -70,11 +66,6 @@ namespace RobotControllerLib
                     }
                 }
             }
-
-
-
-
-            if (debug) AffichageCommande();
         }
 
 
@@ -83,53 +74,14 @@ namespace RobotControllerLib
             if (hand.GrabStrength == 1 && !HlManager.IsStartPositionLock)
             {
                 HlManager.SetAllStartPosition(hand);
-                if (debug) Console.WriteLine("positionLock");
             }
             if (hand.GrabStrength == 0 && HlManager.IsStartPositionLock)
             {
                 HlManager.SetAllStartPosition(null);
                 calculateurDeplacement.ListeCommande.Clear();
-                if (debug) Console.WriteLine("positionUnLock");
             }
         }
 
-
-        private void AffichageMain(IEnumerable<HandLeap> hands)
-        {
-            Console.Clear();
-
-            if (hands.Count() == 0)
-            {
-                Console.WriteLine("Pas de main");
-            }
-            else
-            {
-
-                Console.Write("Start Position : ");
-                if (HlManager.IsStartPositionLock) Console.WriteLine(HlManager.StartPosition.PalmPosition);
-                else Console.WriteLine("null");
-
-                foreach (var hand in hands)
-                {
-                    Console.WriteLine("|" + hand.Id + hand.Side + "|  " + hand.PalmPosition + "  :  " + hand.GrabStrength);
-                    Console.WriteLine(hand.Rotation);
-                }
-            }
-
-        }
-
-
-        private void AffichageCommande()
-        {
-            Console.Clear();
-
-            Console.WriteLine(calculateurDeplacement.Vitesse);
-
-            foreach (Commande c in calculateurDeplacement.ListeCommande)
-            {
-                Console.WriteLine(c);
-            }
-        }
 
 
 

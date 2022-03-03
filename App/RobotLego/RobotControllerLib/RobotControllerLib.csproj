@@ -58,7 +58,6 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy /yr "$(ProjectDir)..\ext\LeapC.dll" "$(TargetDir)"
-
 xcopy /yr "$(ProjectDir)..\ext\UnityEngine.CoreModule.dll" "$(TargetDir)"
 </PostBuildEvent>
   </PropertyGroup>
