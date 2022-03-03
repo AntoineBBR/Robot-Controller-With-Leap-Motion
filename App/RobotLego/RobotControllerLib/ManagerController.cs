@@ -59,8 +59,6 @@ namespace RobotControllerLib
                     }
                 }
             }
-
-            Debug.WriteLine(calculateurDeplacement.Vitesse.ToString());
         }
 
 

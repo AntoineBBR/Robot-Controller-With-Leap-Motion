@@ -102,5 +102,16 @@ namespace RobotControllerLib
             if (Vitesse < 10) Vitesse = 10;
             if (Vitesse > 100) Vitesse = 100;
         }
+
+        public String AfficherListeCommande()
+        {
+            String s = "";
+            foreach(Commande c in ListeCommande)
+            {
+                s = s + c.ToString();
+            }
+
+            return s;
+        }
     }
 }
