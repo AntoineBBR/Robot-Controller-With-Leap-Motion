@@ -30,14 +30,6 @@ namespace LegoController
 
         }
 
-
-
-
-
-
-
-
-
         public BluetoothDevice SelectedDevice
         {
             get { return selectedDevice; }
@@ -68,12 +60,16 @@ namespace LegoController
         {
             if (brickManager.Connected)
                 brickManager.Disconnect();
+            manager.t.Abort();
+            manager.t2.Abort();
         }
 
         public void root_Loaded(object sender, RoutedEventArgs e)
         {
             DeviceSelected += MainWindow_DeviceSelected;
         }
+
+
 
         // ----------------------------------------------------------------------------------------------------------------------------------------------- //
         // ----------------------------------------------------------------------------------------------------------------------------------------------- //
@@ -94,7 +90,6 @@ namespace LegoController
 
             commands.MotorTest(port);
         }
-
 
         private void ButtonAction_EmergencyStop(object sender, RoutedEventArgs e)
         {
@@ -159,7 +154,7 @@ namespace LegoController
 
         private void ButtonAction_1(object sender, RoutedEventArgs e)
         {
-            commands.Command_1();
+            commands.Command_1(power);
         }
 
         private void ButtonAction_2(object sender, RoutedEventArgs e)
@@ -169,7 +164,7 @@ namespace LegoController
 
         private void ButtonAction_3(object sender, RoutedEventArgs e)
         {
-            commands.Command_1();
+            commands.Command_3(power);
         }
     }
 }

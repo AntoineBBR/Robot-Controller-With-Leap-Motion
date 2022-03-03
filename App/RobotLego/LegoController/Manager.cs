@@ -8,8 +8,8 @@ namespace LegoController
 
     public class Manager
     {
-        private Thread t = new Thread(Boucle);
-        private Thread t2 = new Thread(BoucleCommande);
+        public Thread t = new Thread(Boucle);
+        public Thread t2 = new Thread(BoucleCommande);
         private static bool isStopOneTime = false;
 
         public static ManagerController managerCtrl;

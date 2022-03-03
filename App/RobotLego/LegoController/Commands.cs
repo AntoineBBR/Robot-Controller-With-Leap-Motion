@@ -85,21 +85,53 @@ namespace LegoController
 
         // ------------------------- Commandes Personnalisées ------------------------- //
 
-        public async void Command_1()
+        public async void Command_1(int power)
         {
-            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.A, 100);
-            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.B, 100);
+            MoveLinearX(power);
             await Task.Delay(2000);
-            await brickManager.DirectCommand.StopMotorAsync(InputPort.A);
-            await brickManager.DirectCommand.StopMotorAsync(InputPort.B);
+            EmergencyStop();
+            await Task.Delay(500);
+            MoveLinearX(-power);
+            await Task.Delay(2000);
+            EmergencyStop();
         }
 
         public async void Command_2(int power)
         {
-            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.A, power / 2);
-            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.B, power);
-            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.C, -power);
-            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.D, power / 2);
+            MoveLinearY(power);
+            await Task.Delay(2000);
+            EmergencyStop();
+            await Task.Delay(500);
+            MoveLinearY(-power);
+            await Task.Delay(2000);
+            EmergencyStop();
+        }
+
+        public async void Command_3(int power)
+        {
+            MoveDiagonal1(power);
+            await Task.Delay(2000);
+            EmergencyStop();
+            await Task.Delay(500);
+            MoveDiagonal1(-power);
+            await Task.Delay(4000);
+            EmergencyStop();
+            await Task.Delay(500);
+            MoveDiagonal1(power);
+            await Task.Delay(2000);
+            EmergencyStop();
+            await Task.Delay(1000);
+            MoveDiagonal2(power);
+            await Task.Delay(2000);
+            EmergencyStop();
+            await Task.Delay(500);
+            MoveDiagonal2(-power);
+            await Task.Delay(4000);
+            EmergencyStop();
+            await Task.Delay(500);
+            MoveDiagonal2(power);
+            await Task.Delay(2000);
+            EmergencyStop();
         }
     }
 }
