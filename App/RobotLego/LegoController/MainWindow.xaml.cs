@@ -22,7 +22,7 @@ namespace LegoController
         {
             InitializeComponent();
             DataContext = brickManager;
-        }     
+        }
 
         public BluetoothDevice SelectedDevice
         {
@@ -65,7 +65,12 @@ namespace LegoController
         // ----------------------------------------------------------------------------------------------------------------------------------------------- //
         // ----------------------------------------------------------------------------------------------------------------------------------------------- //
 
-        private int power = 75;
+        private int power = 50;
+
+        private void sliderPower_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            power = Convert.ToInt32(sliderPower.Value);
+        }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
@@ -94,50 +99,42 @@ namespace LegoController
 
         private void ButtonAction_Left(object sender, RoutedEventArgs e)
         {
-            // TODO: Faire la mise au point
             commands.MoveLinearY(power);
         }
 
         private void ButtonAction_Right(object sender, RoutedEventArgs e)
         {
-            // TODO: Faire la mise au point
             commands.MoveLinearY(-power);
         }
 
         private void ButtonAction_UpLeft(object sender, RoutedEventArgs e)
         {
-            // TODO: Faire la mise au point
             commands.MoveDiagonal1(power);
         }
 
         private void ButtonAction_UpRight(object sender, RoutedEventArgs e)
         {
-            // TODO: Faire la mise au point
             commands.MoveDiagonal2(power);
         }
 
         private void ButtonAction_DownLeft(object sender, RoutedEventArgs e)
         {
-            // TODO: Faire la mise au point
             commands.MoveDiagonal2(-power);
         }
 
         private void ButtonAction_DownRight(object sender, RoutedEventArgs e)
         {
-            // TODO: Faire la mise au point
             commands.MoveDiagonal1(-power);
         }
 
 
         private void ButtonAction_TurnLeft(object sender, RoutedEventArgs e)
         {
-            // TODO: Faire la mise au point
             commands.Turn(power);
         }
 
         private void ButtonAction_TurnRight(object sender, RoutedEventArgs e)
         {
-            // TODO: Faire la mise au point
             commands.Turn(-power);
         }
 

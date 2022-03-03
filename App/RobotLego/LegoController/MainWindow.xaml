@@ -63,7 +63,8 @@
 
             <Button Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1" Margin="5" Content="ARRET D'URGENCE" Click="ButtonAction_EmergencyStop" IsEnabled="{Binding AlmostOnePortConnected}"/>
 
-            <Slider Grid.Column="6" Grid.RowSpan="4" 
+            <Slider Name="sliderPower" ValueChanged="sliderPower_ValueChanged"
+                    Grid.Column="6" Grid.RowSpan="4" 
                     HorizontalAlignment="Center" Margin="5"
                     Minimum="0" Maximum="100"
                     SmallChange="1" LargeChange="10"
@@ -76,10 +77,10 @@
         <Button Margin="0,0,0,5" Content="Action 3" Click="ButtonAction_3" IsEnabled="{Binding AllPortConnected}"/>
 
         <Rectangle Width="500" HorizontalAlignment="Center" Height="1" Fill="Black" Margin="10"/>
-        <ContentControl Content="{Binding InputPort1}" ContentTemplate="{StaticResource inputPortTemplate}" HorizontalAlignment="Center" Visibility="{Binding InputPort1, Converter={StaticResource inputPortToVisiblityConverter}}"/>
-        <ContentControl Content="{Binding InputPort2}" ContentTemplate="{StaticResource inputPortTemplate}" HorizontalAlignment="Center" Visibility="{Binding InputPort2, Converter={StaticResource inputPortToVisiblityConverter}}"/>
-        <ContentControl Content="{Binding InputPort3}" ContentTemplate="{StaticResource inputPortTemplate}" HorizontalAlignment="Center" Visibility="{Binding InputPort3, Converter={StaticResource inputPortToVisiblityConverter}}"/>
-        <ContentControl Content="{Binding InputPort4}" ContentTemplate="{StaticResource inputPortTemplate}" HorizontalAlignment="Center" Visibility="{Binding InputPort4, Converter={StaticResource inputPortToVisiblityConverter}}"/>
+        <ContentControl Margin="0,0,0,5" Content="{Binding InputPort1}" ContentTemplate="{StaticResource inputPortTemplate}" HorizontalAlignment="Center" Visibility="{Binding InputPort1, Converter={StaticResource inputPortToVisiblityConverter}}"/>
+        <ContentControl Margin="0,0,0,5" Content="{Binding InputPort2}" ContentTemplate="{StaticResource inputPortTemplate}" HorizontalAlignment="Center" Visibility="{Binding InputPort2, Converter={StaticResource inputPortToVisiblityConverter}}"/>
+        <ContentControl Margin="0,0,0,5" Content="{Binding InputPort3}" ContentTemplate="{StaticResource inputPortTemplate}" HorizontalAlignment="Center" Visibility="{Binding InputPort3, Converter={StaticResource inputPortToVisiblityConverter}}"/>
+        <ContentControl Margin="0,0,0,5" Content="{Binding InputPort4}" ContentTemplate="{StaticResource inputPortTemplate}" HorizontalAlignment="Center" Visibility="{Binding InputPort4, Converter={StaticResource inputPortToVisiblityConverter}}"/>
 
         <ev3:EV3RobotChooser SelectedDevice="{Binding SelectedDevice, ElementName=root, Mode=TwoWay}"/>
     </StackPanel>
