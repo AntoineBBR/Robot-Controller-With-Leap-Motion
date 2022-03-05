@@ -41,29 +41,33 @@ namespace RobotControllerLib
         private void Boucle()
         {
             IEnumerable<HandLeap> hands = new List<HandLeap>(HlManager.Hands);
-
-            foreach (var hand in hands)
+            
+            if(hands.Count() != 0)
             {
-                if (hands.Count() != 0 && hand.Side == "R")
+                foreach (var hand in hands)
                 {
-                    DetectionSurMainDroite(hand);
-                    if (HlManager.IsStartPositionLock)
+                    if (hands.Count() != 0 && hand.Side == "R")
                     {
-                        calculateurDeplacement.CalculDeplacementQuatreAxe(HlManager.StartPosition, hand);
-                        calculateurDeplacement.CalculRotation(hand);
-                        calculateurDeplacement.CalculVitesse(HlManager.StartPosition, hand);
-                    }
-                    else
-                    {
-                        calculateurDeplacement.Reset();
+                        DetectionSurMainDroite(hand);
+                        if (HlManager.IsStartPositionLock)
+                        {
+                            calculateurDeplacement.CalculDeplacementQuatreAxe(HlManager.StartPosition, hand);
+                            calculateurDeplacement.CalculRotation(hand);
+                            calculateurDeplacement.CalculVitesse(HlManager.StartPosition, hand);
+                        }
+                        else
+                        {
+                            calculateurDeplacement.Reset();
+                        }
                     }
                 }
-            }
 
-            if (hands.Count() == 0)
-            {
-                calculateurDeplacement.Reset();
+                if (hands.Count() == 0)
+                {
+                    calculateurDeplacement.Reset();
+                }
             }
+            
         }
 
 
