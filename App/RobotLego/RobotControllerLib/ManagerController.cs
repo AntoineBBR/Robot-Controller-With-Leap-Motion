@@ -58,6 +58,7 @@ namespace RobotControllerLib
                         calculateurDeplacement.Reset();
                     }
                 }
+                calculateurDeplacement.Reset();
             }
         }
 
