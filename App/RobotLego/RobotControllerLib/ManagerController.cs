@@ -58,6 +58,10 @@ namespace RobotControllerLib
                         calculateurDeplacement.Reset();
                     }
                 }
+            }
+
+            if (hands.Count() == 0)
+            {
                 calculateurDeplacement.Reset();
             }
         }
