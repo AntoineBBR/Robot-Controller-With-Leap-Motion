@@ -4,61 +4,69 @@ using System.Text;
 
 namespace RobotControllerLib
 {
-    public class CalculateurDeplacement
+    public class ControlCalculator
     {
         public List<Commande> ListeCommande { get; set; }
-        public int Vitesse { get; set; }
+        public int Speed { get; set; } = 50;
         private Leap.Vector relativePosition;
-        private static int marge = 60;
-        private static int margeY = 50;
+        private static readonly int margeX = 60; //marge pour les déplacements avant / arrière
+        private static readonly int margeZ = 40; //marge pour les déplacements de côté
+        private static readonly int margeY = 30; //marge haut bas pour la vitesse
 
-        public CalculateurDeplacement()
+        public ControlCalculator()
         {
             ListeCommande = new List<Commande>();
             relativePosition = new Leap.Vector();
         }
 
-        public void Reset()
+        public void ResetAll()
         {
             ListeCommande.Clear();
-            Vitesse = 0;
+            Speed = 50;
         }
 
-        public void CalculDeplacementQuatreAxe(HandLeap startPosition, HandLeap actualPosition)
+        public void ResetSpeed()
+        {
+            Speed = 50;
+        }
+
+        public void CalculDeplacementQuatreAxe(HandLeap startPosition, HandLeap actualPosition, bool autoSpeed = true)
         {
             relativePosition = actualPosition.PalmPosition - startPosition.PalmPosition;
 
-            if (relativePosition.x < -marge && !ListeCommande.Contains(Commande.GAUCHE))
+            if (relativePosition.x < -margeX && !ListeCommande.Contains(Commande.GAUCHE))
             {
                 ListeCommande.Add(Commande.GAUCHE);
             }
 
-            if (relativePosition.x > marge && !ListeCommande.Contains(Commande.DROITE))
+            if (relativePosition.x > margeX && !ListeCommande.Contains(Commande.DROITE))
             {
                 ListeCommande.Add(Commande.DROITE);
             }
 
-            if (relativePosition.z < -marge && !ListeCommande.Contains(Commande.HAUT))
+            if (relativePosition.z < -margeZ && !ListeCommande.Contains(Commande.HAUT))
             {
                 ListeCommande.Add(Commande.HAUT);
             }
 
-            if (relativePosition.z > marge && !ListeCommande.Contains(Commande.BAS))
+            if (relativePosition.z > margeZ && !ListeCommande.Contains(Commande.BAS))
             {
                 ListeCommande.Add(Commande.BAS);
             }
 
-            if (relativePosition.x >= -marge && relativePosition.x <= marge && (ListeCommande.Contains(Commande.GAUCHE) || ListeCommande.Contains(Commande.DROITE)))
+            if (relativePosition.x >= -margeX && relativePosition.x <= margeX && (ListeCommande.Contains(Commande.GAUCHE) || ListeCommande.Contains(Commande.DROITE)))
             {
                 ListeCommande.Remove(Commande.GAUCHE);
                 ListeCommande.Remove(Commande.DROITE);
             }
 
-            if (relativePosition.z >= -marge && relativePosition.z <= marge && (ListeCommande.Contains(Commande.HAUT) || ListeCommande.Contains(Commande.BAS)))
+            if (relativePosition.z >= -margeZ && relativePosition.z <= margeZ && (ListeCommande.Contains(Commande.HAUT) || ListeCommande.Contains(Commande.BAS)))
             {
                 ListeCommande.Remove(Commande.HAUT);
                 ListeCommande.Remove(Commande.BAS);
             }
+
+            if (autoSpeed) SetAutoSpeed();
         }
 
         public void CalculRotation(HandLeap Position)
@@ -80,35 +88,48 @@ namespace RobotControllerLib
             }
         }
 
-        public void CalculVitesse(HandLeap startPosition, HandLeap actualPosition)
+        public void CalculSpeed(HandLeap startPosition, HandLeap actualPosition)
         {
             relativePosition = actualPosition.PalmPosition - startPosition.PalmPosition;
 
             if (relativePosition.y > margeY)
             {
-                Vitesse = (int)relativePosition.y / 2 + 50 - margeY / 2;
+                Speed = (int)relativePosition.y / 2 + 50 - margeY / 2;
             }
 
             if (relativePosition.y < -margeY)
             {
-                Vitesse = (int)relativePosition.y / 2 + 50 + margeY / 2;
+                Speed = (int)relativePosition.y / 2 + 50 + margeY / 2;
             }
 
             if (relativePosition.y <= margeY && relativePosition.y >= -margeY)
             {
-                Vitesse = 50;
+                Speed = 50;
             }
 
-            if (Vitesse < 10) Vitesse = 10;
-            if (Vitesse > 100) Vitesse = 100;
+            if (Speed < 10) Speed = 10;
+            if (Speed > 100) Speed = 100;
         }
 
-        public String AfficherListeCommande()
+        public void SetAutoSpeed()
+        {
+            if(ListeCommande.Count == 1)
+            {
+                if (ListeCommande.Contains(Commande.HAUT) || ListeCommande.Contains(Commande.BAS)) Speed = 50;
+                if (ListeCommande.Contains(Commande.GAUCHE) || ListeCommande.Contains(Commande.DROITE)) Speed = 60;
+            }
+            if(ListeCommande.Count == 2)
+            {
+                Speed = 70;
+            }
+        }
+
+        public String ToStringCommande()
         {
             String s = "";
             foreach(Commande c in ListeCommande)
             {
-                s = s + c.ToString();
+                s += c.ToString();
             }
 
             return s;

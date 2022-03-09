@@ -6,10 +6,10 @@ namespace RobotControllerLib
 {
     public class ManagerController
     {
-        private HandLeapManager HlManager;
-        private CalculateurDeplacement calculateurDeplacement;
-        private Leap.Controller ctrl;
-        private Timer timer;
+        private readonly HandLeapManager HlManager;
+        private readonly ControlCalculator controlCalculator;
+        private readonly Leap.Controller ctrl;
+        private readonly Timer timer;
 
 
         public ManagerController()
@@ -19,7 +19,7 @@ namespace RobotControllerLib
             ctrl.StartConnection();
 
             HlManager = new HandLeapManager();
-            calculateurDeplacement = new CalculateurDeplacement();
+            controlCalculator = new ControlCalculator();
 
             //Définir la fonction qui tourne en boucle dans un second thread
             timer = new Timer(100);
@@ -45,18 +45,29 @@ namespace RobotControllerLib
             {
                 foreach (var hand in hands)
                 {
-                    if (hands.Count() != 0 && hand.Side == "R")
+                    if (hand != null && hands.Count() != 0 && hand.Side == "R")
                     {
                         DetectionSurMainDroite(hand);
                         if (HlManager.IsStartPositionLock)
                         {
-                            calculateurDeplacement.CalculDeplacementQuatreAxe(HlManager.StartPosition, hand);
-                            calculateurDeplacement.CalculRotation(hand);
-                            calculateurDeplacement.CalculVitesse(HlManager.StartPosition, hand);
+                            controlCalculator.CalculDeplacementQuatreAxe(HlManager.StartPositionRight, hand, !HlManager.IsLeftAvailable);
+                            controlCalculator.CalculRotation(hand);
                         }
                         else
                         {
-                            calculateurDeplacement.Reset();
+                            controlCalculator.ResetAll();
+                        }
+                    }
+                    if (hand != null && hands.Count() > 1 && hand.Side == "L")
+                    {
+                        DetectionSurMainGauche(hand);
+                        if (HlManager.IsLeftAvailable)
+                        {
+                            controlCalculator.CalculSpeed(HlManager.StartPositionLeft, hand);
+                        }
+                        else
+                        {
+                            controlCalculator.ResetSpeed();
                         }
                     }
                 }
@@ -64,7 +75,7 @@ namespace RobotControllerLib
             }
             if (hands.Count() == 0)
             {
-                calculateurDeplacement.Reset();
+                controlCalculator.ResetAll();
             }
 
         }
@@ -73,12 +84,25 @@ namespace RobotControllerLib
         {
             if (hand.GrabStrength == 1 && !HlManager.IsStartPositionLock)
             {
-                HlManager.SetAllStartPosition(hand);
+                HlManager.SetRightStartPosition(hand);
             }
             if (hand.GrabStrength == 0 && HlManager.IsStartPositionLock)
             {
-                HlManager.SetAllStartPosition(null);
-                calculateurDeplacement.ListeCommande.Clear();
+                HlManager.SetRightStartPosition(null);
+                controlCalculator.ResetAll();
+            }
+        }
+
+        private void DetectionSurMainGauche(HandLeap hand)
+        {
+            if (hand.GrabStrength == 1 && !HlManager.IsLeftAvailable)
+            {
+                HlManager.SetLeftStartPosition(hand);
+            }
+            if (hand.GrabStrength == 0 && HlManager.IsLeftAvailable)
+            {
+                HlManager.SetLeftStartPosition(null);
+                controlCalculator.ResetSpeed();
             }
         }
 
@@ -94,12 +118,12 @@ namespace RobotControllerLib
 
         public List<Commande> GetListeCommande()
         {
-            return calculateurDeplacement.ListeCommande;
+            return controlCalculator.ListeCommande;
         }
 
         public int GetVitesse()
         {
-            return calculateurDeplacement.Vitesse;
+            return controlCalculator.Speed;
         }
     }
 }

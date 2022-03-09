@@ -7,18 +7,26 @@ namespace RobotControllerLib
         public HashSet<HandLeap> Hands { get => hands; set => hands = value; }
         private HashSet<HandLeap> hands = new HashSet<HandLeap>();
 
-        public HandLeap StartPosition { get; set; }
+        public HandLeap StartPositionRight { get; set; }
+        public HandLeap StartPositionLeft { get; set; }
         public bool IsStartPositionLock { get; set; }
+        public bool IsLeftAvailable { get; set; }
 
         public HandLeapManager()
         {
             IsStartPositionLock = false;
         }
 
-        public void SetAllStartPosition(HandLeap hand)
+        public void SetRightStartPosition(HandLeap hand)
         {
-            StartPosition = hand;
-            IsStartPositionLock = hand == null ? false : true;
+            StartPositionRight = hand;
+            IsStartPositionLock = hand != null;
+        }
+
+        public void SetLeftStartPosition(HandLeap hand)
+        {
+            StartPositionLeft = hand;
+            IsLeftAvailable = hand != null;
         }
     }
 }

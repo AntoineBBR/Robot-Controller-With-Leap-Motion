@@ -48,7 +48,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CalculateurDeplacement.cs" />
+    <Compile Include="ControlCalculator.cs" />
     <Compile Include="Commandes.cs" />
     <Compile Include="HandLeap.cs" />
     <Compile Include="HandLeapManager.cs" />
