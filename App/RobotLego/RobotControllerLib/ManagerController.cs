@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Timers;
 
@@ -62,14 +61,13 @@ namespace RobotControllerLib
                     }
                 }
 
-                if (hands.Count() == 0)
-                {
-                    calculateurDeplacement.Reset();
-                }
             }
-            
-        }
+            if (hands.Count() == 0)
+            {
+                calculateurDeplacement.Reset();
+            }
 
+        }
 
         private void DetectionSurMainDroite(HandLeap hand)
         {
@@ -83,8 +81,6 @@ namespace RobotControllerLib
                 calculateurDeplacement.ListeCommande.Clear();
             }
         }
-
-
 
         private void Ctrl_FrameReady(object sender, Leap.FrameEventArgs e)
         {
