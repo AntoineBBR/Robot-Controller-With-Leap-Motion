@@ -10,10 +10,10 @@ namespace LegoController
     {
         public Thread t = new Thread(Boucle);
         public Thread t2 = new Thread(BoucleCommande);
-        private bool isStopOneTime = false;
+        private static bool isStopOneTime = false;
 
-        private bool forwardSensor = false;
-        private bool backwardSensor = false;
+        private static bool forwardSensor = false;
+        private static bool backwardSensor = false;
 
         public static ManagerController managerCtrl;
         public static BrickManager brickManager = new BrickManager();
@@ -44,6 +44,8 @@ namespace LegoController
                 while (brickManager.Connected)
                 {
                     Thread.Sleep(100);
+                    // Rajouter un test sur les capteurs
+
                     List<Commande> lcommande = managerCtrl.GetListeCommande();
                     int vitesse = managerCtrl.GetVitesse();
 
@@ -52,18 +54,18 @@ namespace LegoController
                     {
                         if (lcommande.Count == 1)
                         {
-                            if (lcommande.Contains(Commande.HAUT)) { commands.MoveLinearX(vitesse); }
-                            if (lcommande.Contains(Commande.BAS)) { commands.MoveLinearX(-vitesse); }
+                            if (lcommande.Contains(Commande.HAUT) && !forwardSensor) { commands.MoveLinearX(vitesse); }
+                            if (lcommande.Contains(Commande.BAS) && !backwardSensor) { commands.MoveLinearX(-vitesse); }
                             if (lcommande.Contains(Commande.GAUCHE)) { commands.MoveLinearY(vitesse); }
                             if (lcommande.Contains(Commande.DROITE)) { commands.MoveLinearY(-vitesse); }
                             isStopOneTime = false;
                         }
                         if (lcommande.Count == 2)
                         {
-                            if (lcommande.Contains(Commande.HAUT) && lcommande.Contains(Commande.GAUCHE)) { commands.MoveDiagonal1(vitesse); }
-                            if (lcommande.Contains(Commande.HAUT) && lcommande.Contains(Commande.DROITE)) { commands.MoveDiagonal2(vitesse); }
-                            if (lcommande.Contains(Commande.BAS) && lcommande.Contains(Commande.GAUCHE)) { commands.MoveDiagonal2(-vitesse); }
-                            if (lcommande.Contains(Commande.BAS) && lcommande.Contains(Commande.DROITE)) { commands.MoveDiagonal1(-vitesse); }
+                            if (lcommande.Contains(Commande.HAUT) && lcommande.Contains(Commande.GAUCHE) && !forwardSensor) { commands.MoveDiagonal1(vitesse); }
+                            if (lcommande.Contains(Commande.HAUT) && lcommande.Contains(Commande.DROITE) && !forwardSensor) { commands.MoveDiagonal2(vitesse); }
+                            if (lcommande.Contains(Commande.BAS) && lcommande.Contains(Commande.GAUCHE) && !backwardSensor) { commands.MoveDiagonal2(-vitesse); }
+                            if (lcommande.Contains(Commande.BAS) && lcommande.Contains(Commande.DROITE) && !backwardSensor) { commands.MoveDiagonal1(-vitesse); }
                             isStopOneTime = false;
                         }
                     }
