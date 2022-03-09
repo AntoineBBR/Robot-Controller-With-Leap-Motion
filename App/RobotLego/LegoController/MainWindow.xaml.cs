@@ -19,7 +19,6 @@ namespace LegoController
         private BluetoothDevice selectedDevice;
         event EventHandler DeviceSelected;
 
-
         public MainWindow()
         {
             InitializeComponent();

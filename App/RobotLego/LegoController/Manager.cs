@@ -10,7 +10,10 @@ namespace LegoController
     {
         public Thread t = new Thread(Boucle);
         public Thread t2 = new Thread(BoucleCommande);
-        private static bool isStopOneTime = false;
+        private bool isStopOneTime = false;
+
+        private bool forwardSensor = false;
+        private bool backwardSensor = false;
 
         public static ManagerController managerCtrl;
         public static BrickManager brickManager = new BrickManager();
@@ -70,11 +73,8 @@ namespace LegoController
                         if (lcommande.Contains(Commande.TOURNERDROITE)) { commands.Turn(-vitesse); }
                         isStopOneTime = false;
                     }
-
                 }
             }
-            
-
         }
     }
 }
