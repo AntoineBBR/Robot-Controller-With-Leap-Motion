@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:LegoController"
         xmlns:ev3="clr-namespace:AsyncEV3MotorCommandsLib;assembly=AsyncEV3MotorCommandsLib"
         mc:Ignorable="d" Closing="root_Closing" Loaded="root_Loaded"
-        Title="MainWindow" Width="600" x:Name="root">
+        Width="500" MinHeight="500" x:Name="root"
+        Title="RobotController" >
 
     <Window.Resources>
         <ev3:InputPortToVisibilityConverter x:Key="inputPortToVisiblityConverter"/>
@@ -24,12 +25,36 @@
     </Window.Resources>
 
     <StackPanel Margin="5">
-        <Button Margin="0,0,0,5" Content="Test Moteur A" Click="Button_Click_1" IsEnabled="{Binding PortAConnected}"/>
-        <Button Margin="0,0,0,5" Content="Test Moteur B" Click="Button_Click_1" IsEnabled="{Binding PortBConnected}"/>
-        <Button Margin="0,0,0,5" Content="Test Moteur C" Click="Button_Click_1" IsEnabled="{Binding PortCConnected}"/>
-        <Button Margin="0,0,0,5" Content="Test Moteur D" Click="Button_Click_1" IsEnabled="{Binding PortDConnected}"/>
 
-        <Grid Margin="0,20,0,20">
+        <Grid Margin="0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            
+            <Button Margin="0,0,0,5" Content="Test Motor A" Click="ButtonAction_TestMotor" IsEnabled="{Binding PortAConnected}"/>
+            <Button Margin="0,0,0,5" Grid.Row="1" Content="Test Motor B" Click="ButtonAction_TestMotor" IsEnabled="{Binding PortBConnected}"/>
+            <Button Margin="0,0,0,5" Grid.Row="2" Content="Test Motor C" Click="ButtonAction_TestMotor" IsEnabled="{Binding PortCConnected}"/>
+            <Button Margin="0,0,0,5" Grid.Row="3" Content="Test Motor D" Click="ButtonAction_TestMotor" IsEnabled="{Binding PortDConnected}"/>
+
+            <ev3:EV3RobotChooser Margin="10" Grid.Column="1" Grid.RowSpan="4" SelectedDevice="{Binding SelectedDevice, ElementName=root, Mode=TwoWay}"/>
+        </Grid>
+
+        <Rectangle Width="500" HorizontalAlignment="Center" Height="2" Fill="Black" Margin="10"/>
+        
+        <Button Margin="0,0,0,5" Content="Action 1" Click="ButtonAction_1" IsEnabled="{Binding AllPortConnected}"/>
+        <Button Margin="0,0,0,5" Content="Action 2" Click="ButtonAction_2" IsEnabled="{Binding AllPortConnected}"/>
+        <Button Margin="0,0,0,5" Content="Action 3" Click="ButtonAction_3" IsEnabled="{Binding AllPortConnected}"/>
+        
+        <Rectangle Width="500" HorizontalAlignment="Center" Height="2" Fill="Black" Margin="10"/>
+        
+        <Grid Margin="0,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -46,22 +71,22 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Button Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="0" Margin="5" Content="AVANCER" Click="ButtonAction_Forward" IsEnabled="{Binding AllPortConnected}"/>
-            <Button Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="2" Margin="5" Content="RECULER" Click="ButtonAction_Backward" IsEnabled="{Binding AllPortConnected}"/>
+            <Button Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="0" Margin="5" Content="FORWARD" Click="ButtonAction_Forward" IsEnabled="{Binding AllPortConnected}"/>
+            <Button Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="2" Margin="5" Content="BACKWARD" Click="ButtonAction_Backward" IsEnabled="{Binding AllPortConnected}"/>
 
-            <Button Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Margin="5" Content="GAUCHE" Click="ButtonAction_Left" IsEnabled="{Binding AllPortConnected}"/>
-            <Button Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="1" Margin="5" Content="DROITE" Click="ButtonAction_Right" IsEnabled="{Binding AllPortConnected}"/>
+            <Button Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Margin="5" Content="LEFT" Click="ButtonAction_Left" IsEnabled="{Binding AllPortConnected}"/>
+            <Button Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="1" Margin="5" Content="RIGHT" Click="ButtonAction_Right" IsEnabled="{Binding AllPortConnected}"/>
 
-            <Button Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Margin="5" Content="HAUT GAUCHE" Click="ButtonAction_UpLeft" IsEnabled="{Binding AllPortConnected}"/>
-            <Button Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="0" Margin="5" Content="HAUT DROIT" Click="ButtonAction_UpRight" IsEnabled="{Binding AllPortConnected}"/>
+            <Button Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Margin="5" Content="UP LEFT" Click="ButtonAction_UpLeft" IsEnabled="{Binding AllPortConnected}"/>
+            <Button Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="0" Margin="5" Content="UP RIGHT" Click="ButtonAction_UpRight" IsEnabled="{Binding AllPortConnected}"/>
 
-            <Button Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Margin="5" Content="BAS GAUCHE" Click="ButtonAction_DownLeft" IsEnabled="{Binding AllPortConnected}"/>
-            <Button Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="2" Margin="5" Content="BAS DROIT" Click="ButtonAction_DownRight" IsEnabled="{Binding AllPortConnected}"/>
+            <Button Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Margin="5" Content="UP LEFT" Click="ButtonAction_DownLeft" IsEnabled="{Binding AllPortConnected}"/>
+            <Button Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="2" Margin="5" Content="DOWN LEFT" Click="ButtonAction_DownRight" IsEnabled="{Binding AllPortConnected}"/>
 
-            <Button Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3" Margin="5" Content="TOURNER A GAUCHE" Click="ButtonAction_TurnLeft" IsEnabled="{Binding AllPortConnected}"/>
-            <Button Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="3" Margin="5" Content="TOURNER A DROITE" Click="ButtonAction_TurnRight" IsEnabled="{Binding AllPortConnected}"/>
+            <Button Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3" Margin="5" Content="TURN LEFT" Click="ButtonAction_TurnLeft" IsEnabled="{Binding AllPortConnected}"/>
+            <Button Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="3" Margin="5" Content="TURN RIGHT" Click="ButtonAction_TurnRight" IsEnabled="{Binding AllPortConnected}"/>
 
-            <Button Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1" Margin="5" Content="ARRET D'URGENCE" Click="ButtonAction_EmergencyStop" IsEnabled="{Binding AlmostOnePortConnected}"/>
+            <Button Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1" Margin="5" Content="STOP" Click="ButtonAction_EmergencyStop" IsEnabled="{Binding AlmostOnePortConnected}"/>
 
             <Slider Name="sliderPower" ValueChanged="sliderPower_ValueChanged"
                     Grid.Column="6" Grid.RowSpan="4" 
@@ -72,16 +97,28 @@
                     Orientation="Vertical" Value="50"/>
         </Grid>
 
-        <Button Margin="0,0,0,5" Content="Action 1" Click="ButtonAction_1" IsEnabled="{Binding AllPortConnected}"/>
-        <Button Margin="0,0,0,5" Content="Action 2" Click="ButtonAction_2" IsEnabled="{Binding AllPortConnected}"/>
-        <Button Margin="0,0,0,5" Content="Action 3" Click="ButtonAction_3" IsEnabled="{Binding AllPortConnected}"/>
+        <Rectangle Width="500" HorizontalAlignment="Center" Height="2" Fill="Black" Margin="10"/>
 
-        <Rectangle Width="500" HorizontalAlignment="Center" Height="1" Fill="Black" Margin="10"/>
-        <ContentControl Margin="0,0,0,5" Content="{Binding InputPort1}" ContentTemplate="{StaticResource inputPortTemplate}" HorizontalAlignment="Center" Visibility="{Binding InputPort1, Converter={StaticResource inputPortToVisiblityConverter}}"/>
-        <ContentControl Margin="0,0,0,5" Content="{Binding InputPort2}" ContentTemplate="{StaticResource inputPortTemplate}" HorizontalAlignment="Center" Visibility="{Binding InputPort2, Converter={StaticResource inputPortToVisiblityConverter}}"/>
-        <ContentControl Margin="0,0,0,5" Content="{Binding InputPort3}" ContentTemplate="{StaticResource inputPortTemplate}" HorizontalAlignment="Center" Visibility="{Binding InputPort3, Converter={StaticResource inputPortToVisiblityConverter}}"/>
-        <ContentControl Margin="0,0,0,5" Content="{Binding InputPort4}" ContentTemplate="{StaticResource inputPortTemplate}" HorizontalAlignment="Center" Visibility="{Binding InputPort4, Converter={StaticResource inputPortToVisiblityConverter}}"/>
+        <Grid Margin="0,5,0,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
-        <ev3:EV3RobotChooser SelectedDevice="{Binding SelectedDevice, ElementName=root, Mode=TwoWay}"/>
+            <TextBlock Text="Forward Sensor" HorizontalAlignment="Center" />
+            <TextBlock Text="Backward Sensor" Grid.Row="3" HorizontalAlignment="Center" />
+
+            <ContentControl Margin="0,0,0,5" Grid.Column="1" Content="{Binding InputPort1}" ContentTemplate="{StaticResource inputPortTemplate}" HorizontalAlignment="Center" Visibility="{Binding InputPort1, Converter={StaticResource inputPortToVisiblityConverter}}"/>
+            <ContentControl Margin="0,0,0,5" Grid.Column="1" Grid.Row="1" Content="{Binding InputPort2}" ContentTemplate="{StaticResource inputPortTemplate}" HorizontalAlignment="Center" Visibility="{Binding InputPort2, Converter={StaticResource inputPortToVisiblityConverter}}"/>
+            <ContentControl Margin="0,0,0,5" Grid.Column="1" Grid.Row="2" Content="{Binding InputPort3}" ContentTemplate="{StaticResource inputPortTemplate}" HorizontalAlignment="Center" Visibility="{Binding InputPort3, Converter={StaticResource inputPortToVisiblityConverter}}"/>
+            <ContentControl Margin="0,0,0,5" Grid.Column="1" Grid.Row="3" Content="{Binding InputPort4}" ContentTemplate="{StaticResource inputPortTemplate}" HorizontalAlignment="Center" Visibility="{Binding InputPort4, Converter={StaticResource inputPortToVisiblityConverter}}"/>
+        </Grid>
+        
     </StackPanel>
 </Window>

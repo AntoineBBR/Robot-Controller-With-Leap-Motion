@@ -12,14 +12,13 @@ namespace LegoController
         public Dictionary<char, InputPort> inputPorts = Ports.inputPorts;
 
 
-        public async void MotorTest(char port)
+        public async void MotorTest(char port, int power)
         {
-            //await brickManager.Brick.DirectCommand.TurnMotorAtPowerForTimeAsync(ports[port], 100, 2000, true);
-            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(ports[port], 100);
+            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(ports[port], power);
             await Task.Delay(2000);
             await brickManager.DirectCommand.StopMotorAsync(inputPorts[port]);
             await Task.Delay(2000);
-            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(ports[port], -100);
+            await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(ports[port], -power);
             await Task.Delay(2000);
             await brickManager.DirectCommand.StopMotorAsync(inputPorts[port]);
         }
@@ -87,6 +86,7 @@ namespace LegoController
 
         public async void Command_1(int power)
         {
+            EmergencyStop();
             MoveLinearX(power);
             await Task.Delay(2000);
             EmergencyStop();
@@ -98,6 +98,7 @@ namespace LegoController
 
         public async void Command_2(int power)
         {
+            EmergencyStop();
             MoveLinearY(power);
             await Task.Delay(2000);
             EmergencyStop();
@@ -109,6 +110,7 @@ namespace LegoController
 
         public async void Command_3(int power)
         {
+            EmergencyStop();
             MoveDiagonal1(power);
             await Task.Delay(2000);
             EmergencyStop();

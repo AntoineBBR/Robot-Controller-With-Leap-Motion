@@ -73,7 +73,7 @@ namespace AsyncEV3MotorCommandsLib
         private bool portDConnected = false;
 
         /// <summary>
-        /// Made my Valentin
+        /// true if all motors (4) are connected
         /// </summary>
         public bool AllPortConnected
         {
@@ -83,7 +83,7 @@ namespace AsyncEV3MotorCommandsLib
         private bool allPortConnected = false;
 
         /// <summary>
-        /// Made my Valentin
+        /// true if almost 1 motor is connected
         /// </summary>
         public bool AlmostOnePortConnected
         {

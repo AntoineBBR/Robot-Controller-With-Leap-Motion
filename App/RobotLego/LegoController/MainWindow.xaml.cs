@@ -1,9 +1,7 @@
 ﻿using AsyncEV3MotorCommandsLib;
 using BluetoothDevicesScanner;
 using System;
-using System.Diagnostics;
 using System.Linq;
-using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -76,75 +74,122 @@ namespace LegoController
         // ----------------------------------------------------------------------------------------------------------------------------------------------- //
 
         private int power = 50;
+        private string command = "";
 
         private void sliderPower_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             power = Convert.ToInt32(sliderPower.Value);
+            switch (command)
+            {
+                case "":
+                    break;
+                case "moveLinearX":
+                    commands.MoveLinearX(power);
+                    break;
+                case "moveLinearX2":
+                    commands.MoveLinearX(-power);
+                    break;
+                case "moveLinearY":
+                    commands.MoveLinearY(power);
+                    break;
+                case "moveLinearY2":
+                    commands.MoveLinearY(-power);
+                    break;
+                case "moveDiagonal11":
+                    commands.MoveDiagonal1(power);
+                    break;
+                case "moveDiagonal21":
+                    commands.MoveDiagonal2(power);
+                    break;
+                case "moveDiagonal22":
+                    commands.MoveDiagonal2(-power);
+                    break;
+                case "moveDiagonal12":
+                    commands.MoveDiagonal1(-power);
+                    break;
+                case "turnLeft":
+                    commands.Turn(power);
+                    break;
+                case "turnRight":
+                    commands.Turn(-power);
+                    break;
+            }
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void ButtonAction_TestMotor(object sender, RoutedEventArgs e)
         {
             if (!(sender is Button)) return;
             char port = ((sender as Button).Content as string).Last();
             if (!Ports.ports.ContainsKey(port)) return;
 
-            commands.MotorTest(port);
+            commands.MotorTest(port, power);
         }
 
         private void ButtonAction_EmergencyStop(object sender, RoutedEventArgs e)
         {
             commands.EmergencyStop();
+            command = "";
         }
 
         private void ButtonAction_Forward(object sender, RoutedEventArgs e)
         {
             commands.MoveLinearX(power);
+            command = "moveLinearX";
         }
 
         private void ButtonAction_Backward(object sender, RoutedEventArgs e)
         {
             commands.MoveLinearX(-power);
+            command = "moveLinearX2";
         }
 
         private void ButtonAction_Left(object sender, RoutedEventArgs e)
         {
             commands.MoveLinearY(power);
+            command = "moveLinearY";
         }
 
         private void ButtonAction_Right(object sender, RoutedEventArgs e)
         {
             commands.MoveLinearY(-power);
+            command = "moveLinearY2";
         }
 
         private void ButtonAction_UpLeft(object sender, RoutedEventArgs e)
         {
             commands.MoveDiagonal1(power);
+            command = "moveDiagonal11";
         }
 
         private void ButtonAction_UpRight(object sender, RoutedEventArgs e)
         {
             commands.MoveDiagonal2(power);
+            command = "moveDiagonal21";
         }
 
         private void ButtonAction_DownLeft(object sender, RoutedEventArgs e)
         {
             commands.MoveDiagonal2(-power);
+            command = "moveDiagonal22";
         }
 
         private void ButtonAction_DownRight(object sender, RoutedEventArgs e)
         {
             commands.MoveDiagonal1(-power);
+            command = "moveDiagonal12";
         }
 
 
         private void ButtonAction_TurnLeft(object sender, RoutedEventArgs e)
         {
             commands.Turn(power);
+            command = "turnLeft";
         }
 
         private void ButtonAction_TurnRight(object sender, RoutedEventArgs e)
         {
             commands.Turn(-power);
+            command = "turnRight";
         }
 
 
