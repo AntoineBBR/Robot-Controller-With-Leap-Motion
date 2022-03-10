@@ -5,26 +5,7 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
 
-        <SolidColorBrush Color="#FF09D722" x:Key="mainColor"/>
-        <SolidColorBrush Color="#FFB40E9D" x:Key="secondaryColor"/>
-        <SolidColorBrush Color="#FFEEF506" x:Key="thirdColor"/>
-
-        <!--<Style TargetType="Button">
-            <Setter Property="Background" Value="#FFB40E9D"/>
-            <Setter Property="Foreground" Value="#FF09D722"/>
-        </Style>-->
-
-        <Style TargetType="Button">
-            <Style.Triggers>
-                <Trigger Property="IsEnabled" Value="True">
-                    <Setter Property="Background" Value="#FF09D722"/>
-                    <Setter Property="Foreground" Value="#FFB40E9D"/>
-                </Trigger>
-                <Trigger Property="IsEnabled" Value="False">
-                    <Setter Property="Foreground" Value="#FFB40E9D"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
+        <SolidColorBrush Color="DarkSalmon" x:Key="mainColor"/>
 
     </Application.Resources>
 </Application>
