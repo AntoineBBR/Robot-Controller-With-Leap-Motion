@@ -5,7 +5,6 @@ using System.Threading;
 
 namespace LegoController
 {
-
     public class Manager
     {
         public Thread t = new Thread(Boucle);
@@ -44,7 +43,6 @@ namespace LegoController
                 while (brickManager.Connected)
                 {
                     Thread.Sleep(100);
-                    // Rajouter un test sur les capteurs
 
                     List<Commande> lcommande = managerCtrl.GetListeCommande();
                     int vitesse = managerCtrl.GetVitesse();

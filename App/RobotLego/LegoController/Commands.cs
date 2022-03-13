@@ -5,13 +5,20 @@ using System.Threading.Tasks;
 
 namespace LegoController
 {
+    /// <summary>
+    /// Simple commands to manage the way the robot moves
+    /// </summary>
     public class Commands
     {
         private BrickManager brickManager = Manager.brickManager;
         public Dictionary<char, OutputPort> ports = Ports.ports;
         public Dictionary<char, InputPort> inputPorts = Ports.inputPorts;
 
-
+        /// <summary>
+        /// Run the designed motor to check if it works
+        /// </summary>
+        /// <param name="port"> Implicite way to name a specific motor </param>
+        /// <param name="power"> Powerness apply the the motors </param>
         public async void MotorTest(char port, int power)
         {
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(ports[port], power);
@@ -23,55 +30,71 @@ namespace LegoController
             await brickManager.DirectCommand.StopMotorAsync(inputPorts[port]);
         }
 
+        /// <summary>
+        /// Emergy stop of all motors
+        /// </summary>
         public async void EmergencyStop()
         {
-            // Arrêt de tous les moteurs
             await brickManager.DirectCommand.StopMotorAsync(InputPort.A);
             await brickManager.DirectCommand.StopMotorAsync(InputPort.B);
             await brickManager.DirectCommand.StopMotorAsync(InputPort.C);
             await brickManager.DirectCommand.StopMotorAsync(InputPort.D);
         }
 
+        /// <summary>
+        /// Move (forward / backward)
+        /// </summary>
+        /// <param name="power"> Powerness apply the the motors </param>
         public async void MoveLinearX(int power)
         {
-            // Avancement sur l'axe X (forward / backward)
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.A, power);
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.B, power);
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.C, -power);
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.D, -power);
         }
 
+        /// <summary>
+        /// Move (left / right)
+        /// </summary>
+        /// <param name="power"> Powerness apply the the motors </param>
         public async void MoveLinearY(int power)
         {
-            // Avancement sur l'axe Y (left / right)
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.A, -power);
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.B, power);
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.C, -power);
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.D, power);
         }
 
+        /// <summary>
+        /// Move (up right / down left)
+        /// </summary>
+        /// <param name="power"> Powerness apply the the motors </param>
         public async void MoveDiagonal1(int power)
         {
-            // Avancement sur la diagonale (up right / down left)
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.A, 0);
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.B, power);
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.C, -power);
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.D, 0);
         }
 
+        /// <summary>
+        /// Move (up left / down right)
+        /// </summary>
+        /// <param name="power"> Powerness apply the the motors </param>
         public async void MoveDiagonal2(int power)
-        {
-            // Avancement sur la diagonale (up left / down right)
+        {  
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.A, power);
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.B, 0);
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.C, 0);
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.D, -power);
         }
 
-
+        /// <summary>
+        /// Rotation (left / right)
+        /// </summary>
+        /// <param name="power"> Powerness apply the the motors </param>
         public async void Turn(int power)
         {
-            // Rotation (left / right)
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.A, -power);
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.B, power);
             await brickManager.Brick.DirectCommand.TurnMotorAtPowerAsync(OutputPort.C, power);
@@ -80,10 +103,15 @@ namespace LegoController
 
 
 
+        /* ---------------------------------------------------------------------------- //
+        // ------------------------------ Custom presets ------------------------------ //
+        // ---------------------------------------------------------------------------- */
 
 
-        // ------------------------- Commandes Personnalisées ------------------------- //
-
+        /// <summary>
+        /// Quickly shows how the robot move (forward/backward)
+        /// </summary>
+        /// <param name="power"> Powerness apply the the motors </param>
         public async void Command_1(int power)
         {
             EmergencyStop();
@@ -96,6 +124,10 @@ namespace LegoController
             EmergencyStop();
         }
 
+        /// <summary>
+        /// Quickly shows how the robot move (left/right)
+        /// </summary>
+        /// <param name="power"> Powerness apply the the motors </param>
         public async void Command_2(int power)
         {
             EmergencyStop();
@@ -108,6 +140,10 @@ namespace LegoController
             EmergencyStop();
         }
 
+        /// <summary>
+        /// Shows how the robot move (diagonaly)
+        /// </summary>
+        /// <param name="power"> Powerness apply the the motors </param>
         public async void Command_3(int power)
         {
             EmergencyStop();

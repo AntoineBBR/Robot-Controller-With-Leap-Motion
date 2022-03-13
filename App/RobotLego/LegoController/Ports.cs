@@ -5,6 +5,9 @@ namespace LegoController
 {
     public class Ports
     {
+        /// <summary>
+        /// Motors
+        /// </summary>
         public static Dictionary<char, OutputPort> ports = new Dictionary<char, OutputPort>()
         {
             {'A', OutputPort.A},
@@ -13,6 +16,9 @@ namespace LegoController
             {'D', OutputPort.D}
         };
 
+        /// <summary>
+        /// Sensors
+        /// </summary>
         public static Dictionary<char, InputPort> inputPorts = new Dictionary<char, InputPort>()
         {
             {'A', InputPort.A},
