@@ -6,6 +6,7 @@
     <Application.Resources>
 
         <SolidColorBrush Color="DarkSalmon" x:Key="mainColor"/>
+        <!-- Basically the best color on the world (really not) -->
 
     </Application.Resources>
 </Application>
