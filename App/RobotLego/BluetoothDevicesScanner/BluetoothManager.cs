@@ -2,9 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Management;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace BluetoothDevicesScanner
@@ -88,7 +90,7 @@ namespace BluetoothDevicesScanner
             {
                 BluetoothClient bluetoothClient = new BluetoothClient();
                 BluetoothDeviceInfo[] devicesInfo = bluetoothClient.DiscoverDevices(100, false, false, false, true);
-                return devicesInfo;
+                return devicesInfo == null ? devicesInfo : null;
             });
         }
     }

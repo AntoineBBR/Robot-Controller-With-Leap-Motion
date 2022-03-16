@@ -4,14 +4,26 @@ using System.Text;
 
 namespace RobotControllerLib
 {
+    /// <summary>
+    /// class containing all the calculations to detect a hand movement
+    /// </summary>
     public class ControlCalculator
     {
+        /// <summary>
+        /// list of current commands
+        /// </summary>
         public List<Commande> ListeCommande { get; set; }
+        /// <summary>
+        /// speed indicator 
+        /// </summary>
         public int Speed { get; set; } = 50;
+        /// <summary>
+        /// use for absolute position towards the starting position
+        /// </summary>
         private Leap.Vector relativePosition;
-        private static readonly int margeX = 60; //marge pour les déplacements avant / arrière
-        private static readonly int margeZ = 40; //marge pour les déplacements de côté
-        private static readonly int margeY = 30; //marge haut bas pour la vitesse
+        private static readonly int margeX = 60; //margin for forward and backward movement
+        private static readonly int margeZ = 40; //margin for sideways movement
+        private static readonly int margeY = 30; //high-low margin for speed
 
         public ControlCalculator()
         {
@@ -19,20 +31,32 @@ namespace RobotControllerLib
             relativePosition = new Leap.Vector();
         }
 
+        /// <summary>
+        /// reset the list of current commands and the speed
+        /// </summary>
         public void ResetAll()
         {
             ListeCommande.Clear();
             Speed = 50;
         }
 
+        /// <summary>
+        /// reset the speed
+        /// </summary>
         public void ResetSpeed()
         {
             Speed = 50;
         }
 
-        public void CalculDeplacementQuatreAxe(HandLeap startPosition, HandLeap actualPosition, bool autoSpeed = true)
+        /// <summary>
+        /// calculates a position relative to the starting position and compares it to the margin to see if a direction is detached
+        /// </summary>
+        /// <param name="startPosition">the starting position right hand</param>
+        /// <param name="currentPosition">the current position of the right hand</param>
+        /// <param name="autoSpeed">true to automatically calculate the motors speed / false for always have the same motors speed </param>
+        public void FourAxisMouvCalculation(HandLeap startPosition, HandLeap currentPosition, bool autoSpeed = true)
         {
-            relativePosition = actualPosition.PalmPosition - startPosition.PalmPosition;
+            relativePosition = currentPosition.PalmPosition - startPosition.PalmPosition;
 
             if (relativePosition.x < -margeX && !ListeCommande.Contains(Commande.GAUCHE))
             {
@@ -69,6 +93,10 @@ namespace RobotControllerLib
             if (autoSpeed) SetAutoSpeed();
         }
 
+        /// <summary>
+        /// observes the twist of the wrist
+        /// </summary>
+        /// <param name="Position">current position of the right hand (contains a torsion indicator)</param>
         public void CalculRotation(HandLeap Position)
         {
             if (Position.Rotation.z > 0.3 && !ListeCommande.Contains(Commande.TOURNERGAUCHE))
@@ -88,9 +116,14 @@ namespace RobotControllerLib
             }
         }
 
-        public void CalculSpeed(HandLeap startPosition, HandLeap actualPosition)
+        /// <summary>
+        /// calculates a position relative to the starting position and compares it to the margin to see if the hand is higher or lower (increase / decrease speed)
+        /// </summary>
+        /// <param name="startPosition">the starting position left hand</param>
+        /// <param name="currentPosition">the current position left hand</param>
+        public void CalculSpeed(HandLeap startPosition, HandLeap currentPosition)
         {
-            relativePosition = actualPosition.PalmPosition - startPosition.PalmPosition;
+            relativePosition = currentPosition.PalmPosition - startPosition.PalmPosition;
 
             if (relativePosition.y > margeY)
             {
@@ -111,6 +144,9 @@ namespace RobotControllerLib
             if (Speed > 100) Speed = 100;
         }
 
+        /// <summary>
+        /// calculates the speed so that the robot moves at the same speed going straight, diagonally and sideways
+        /// </summary>
         public void SetAutoSpeed()
         {
             if(ListeCommande.Count == 1)
@@ -124,6 +160,10 @@ namespace RobotControllerLib
             }
         }
 
+        /// <summary>
+        /// to display the commands list
+        /// </summary>
+        /// <returns></returns>
         public String ToStringCommande()
         {
             String s = "";

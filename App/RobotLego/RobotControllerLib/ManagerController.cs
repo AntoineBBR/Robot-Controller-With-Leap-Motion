@@ -10,6 +10,7 @@ namespace RobotControllerLib
         private readonly ControlCalculator controlCalculator;
         private readonly Leap.Controller ctrl;
         private readonly Timer timer;
+        private bool threadOn = true;
 
 
         public ManagerController()
@@ -21,36 +22,39 @@ namespace RobotControllerLib
             HlManager = new HandLeapManager();
             controlCalculator = new ControlCalculator();
 
-            //Définir la fonction qui tourne en boucle dans un second thread
             timer = new Timer(100);
             timer.Elapsed += (source, ElapsedEventArgs) => Boucle();
         }
 
-
+        /// <summary>
+        /// start the main thread (Boucle function)
+        /// </summary>
         public void Detection()
         {
             //démarage du thread
             timer.Start();
-            while (true) { }
+            while (threadOn) { }
             timer.Stop();
             ctrl.StopConnection();
         }
 
-
+        /// <summary>
+        /// looping function for detecting and updating the direction list
+        /// </summary>
         private void Boucle()
         {
             IEnumerable<HandLeap> hands = new List<HandLeap>(HlManager.Hands);
             
-            if(hands.Count() != 0)
+            if(hands.Count() != 0) //if one hand at least is detected
             {
                 foreach (var hand in hands)
                 {
-                    if (hand != null && hands.Count() != 0 && hand.Side == "R")
+                    if (hand != null && hands.Count() != 0 && hand.Side == "R") //if right hand -> detection on right hand -> update of the list
                     {
-                        DetectionSurMainDroite(hand);
+                        RightHandDetection(hand);
                         if (HlManager.IsStartPositionLock)
                         {
-                            controlCalculator.CalculDeplacementQuatreAxe(HlManager.StartPositionRight, hand, !HlManager.IsLeftAvailable);
+                            controlCalculator.FourAxisMouvCalculation(HlManager.StartPositionRight, hand, !HlManager.IsLeftAvailable);
                             controlCalculator.CalculRotation(hand);
                         }
                         else
@@ -58,9 +62,9 @@ namespace RobotControllerLib
                             controlCalculator.ResetAll();
                         }
                     }
-                    if (hand != null && hands.Count() > 1 && hand.Side == "L")
+                    if (hand != null && hands.Count() > 1 && hand.Side == "L") //if left hand -> detection on left hand -> update of the speed
                     {
-                        DetectionSurMainGauche(hand);
+                        LeftHandDetection(hand);
                         if (HlManager.IsLeftAvailable)
                         {
                             controlCalculator.CalculSpeed(HlManager.StartPositionLeft, hand);
@@ -73,14 +77,18 @@ namespace RobotControllerLib
                 }
 
             }
-            if (hands.Count() == 0)
+            if (hands.Count() == 0) //if no hands detected -> reset list and speed
             {
                 controlCalculator.ResetAll();
             }
 
         }
 
-        private void DetectionSurMainDroite(HandLeap hand)
+        /// <summary>
+        /// detect if the right hand is close
+        /// </summary>
+        /// <param name="hand">right hand object</param>
+        private void RightHandDetection(HandLeap hand)
         {
             if (hand.GrabStrength == 1 && !HlManager.IsStartPositionLock)
             {
@@ -93,7 +101,11 @@ namespace RobotControllerLib
             }
         }
 
-        private void DetectionSurMainGauche(HandLeap hand)
+        /// <summary>
+        /// detect if the left hand is close
+        /// </summary>
+        /// <param name="hand">left hand object</param>
+        private void LeftHandDetection(HandLeap hand)
         {
             if (hand.GrabStrength == 1 && !HlManager.IsLeftAvailable)
             {
@@ -106,6 +118,11 @@ namespace RobotControllerLib
             }
         }
 
+        /// <summary>
+        /// update the list of hands
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Ctrl_FrameReady(object sender, Leap.FrameEventArgs e)
         {
             HlManager.Hands.Clear();
@@ -116,11 +133,19 @@ namespace RobotControllerLib
             }
         }
 
+        /// <summary>
+        /// getter commands list
+        /// </summary>
+        /// <returns>commands list</returns>
         public List<Commande> GetListeCommande()
         {
             return controlCalculator.ListeCommande;
         }
 
+        /// <summary>
+        /// getter speed
+        /// </summary>
+        /// <returns>speed</returns>
         public int GetVitesse()
         {
             return controlCalculator.Speed;
