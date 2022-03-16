@@ -9,11 +9,12 @@ A simple project to control a `LegoV3MindStorms` thanks to a `Leap Motion`
 1. DownLoad & Install the Leap Motion software [here](https://developer.leapmotion.com/tracking-software-download)
 2. Plug your Leap Motion device
 3. Activate the Bluetooth on your computer
-4. Pair your LegoV3MindStorms and your computer (Computer's Settings -> add a Bluetooth device -> click on the "DeviceName" to Connect -> accept the paring on your brick -> add a ping code on it -> fill the connection field with the same code on your computer -> Everything's done!)
-5. Launch the `RobotLego.sln` located in the folder: `./App/RobotLego`
-6. Build & Run the solution. (make sure that `LegoController` is the starting project. If not, right click on `LegoController` in solution explorer -> Set as startup project)
-7. Click the button "Scan" on the top-right corner of the window
-8. Wait the LegoDevice to appear on the list and then click one time to connect it (A sound should be played!)
+4. Enable the `Bluetooth` option in the settings of the `LegoV3MindStorms`. Make sure to disable the Iphone/Ipad one.
+5. Pair your LegoV3MindStorms and your computer (Computer's Settings -> add a Bluetooth device -> click on the "DeviceName" to Connect -> accept the paring on your brick -> add a ping code on it -> fill the connection field with the same code on your computer -> Everything's done!)
+6. Launch the `RobotLego.sln` located in the folder: `./App/RobotLego`
+7. Build & Run the solution. (make sure that `LegoController` is the starting project. If not, right click on `LegoController` in solution explorer -> Set as startup project)
+8. Click the button "Scan" on the top-right corner of the window
+9. Wait the LegoDevice to appear on the list and then click one time to connect it (A sound should be played!)
 
 ### Part 2.1
 

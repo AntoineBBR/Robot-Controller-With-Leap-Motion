@@ -60,6 +60,8 @@ namespace LegoController
                     forwardSensor = brickManager.InputPort1.PercentValue < marge;
                     backwardSensor = brickManager.InputPort4.PercentValue < marge;
 
+                    Debug.WriteLine(forwardSensor);
+
                     if (lcommande.Count == 0 && isStopOneTime == false) { commands.EmergencyStop(); isStopOneTime = true; }
                     if (!lcommande.Contains(Commande.TOURNERGAUCHE) && !lcommande.Contains(Commande.TOURNERDROITE))
                     {
