@@ -1,23 +1,31 @@
 ﻿using AsyncEV3MotorCommandsLib;
 using RobotControllerLib;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading;
 
 namespace LegoController
 {
+    /// <summary>
+    /// Manager that launch the LeapMotion Manager link it to the robot commands
+    /// </summary>
     public class Manager
     {
-        public Thread t = new Thread(Boucle);
-        public Thread t2 = new Thread(BoucleCommande);
+        public Thread t = new Thread(Loop);
+        public Thread t2 = new Thread(CommandsLoop);
         private static bool isStopOneTime = false;
 
         private static bool forwardSensor = false;
         private static bool backwardSensor = false;
+        private static int marge = 20;
 
         public static ManagerController managerCtrl;
         public static BrickManager brickManager = new BrickManager();
         public static Commands commands = new Commands();
 
+        /// <summary>
+        /// Launch of threads
+        /// </summary>
         public void LaunchDetection()
         {
             t.Start();
@@ -25,15 +33,18 @@ namespace LegoController
             t2.Start();
         }
 
-        public static void Boucle()
+        /// <summary>
+        /// 
+        /// </summary>
+        public static void Loop()
         {
             managerCtrl = new ManagerController();
             managerCtrl.Detection();
         }
 
-        public static void BoucleCommande()
+        public static void CommandsLoop()
         {
-            while(true)
+            while(true)     // It's very ugly (yes), but since the feature is inerrant to the application, a way to pause it is unnecessary.
             {
                 while (!brickManager.Connected)
                 {
@@ -46,6 +57,8 @@ namespace LegoController
 
                     List<Commande> lcommande = managerCtrl.GetListeCommande();
                     int vitesse = managerCtrl.GetVitesse();
+                    forwardSensor = brickManager.InputPort1.PercentValue < marge;
+                    backwardSensor = brickManager.InputPort4.PercentValue < marge;
 
                     if (lcommande.Count == 0 && isStopOneTime == false) { commands.EmergencyStop(); isStopOneTime = true; }
                     if (!lcommande.Contains(Commande.TOURNERGAUCHE) && !lcommande.Contains(Commande.TOURNERDROITE))

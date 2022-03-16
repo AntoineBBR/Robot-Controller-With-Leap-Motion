@@ -29,13 +29,14 @@ How to use the `Graphic Interface`
 
 How to use the `Leap Motion`
 
-1. Put your right hand verticaly allign with the device at a heigh of 15cm
+1. Put your right hand verticaly allign with the device at a heigh of 20cm
 2. Put your left hand next to it at the same heigth
-3. Close your 2 fists to engage the system
+3. Close your right hand to engage the system
 4. Choose one of the 8 cardinals direction reconize by the system with your right hand (The robot must move the way you choose)
-5. Try to `rise/down` your left hand vertically to see the robot `accelerate/decelerate`
-6. You can also turn your right wrist to turn the robot itself
-7. Make sure to keep your hands not far away from the leap motion  
+5. Close your left hand to start the speed control system
+6. Try to `rise/down` your left hand vertically to see the robot `accelerate/decelerate`
+7. You can also turn your right wrist to turn the robot itself (turn left for left, right for right)
+8. Make sure to keep your hands not far away from the leap motion  
    
 > **WARNING !!** To stop the robot, open your right hand!! Don't left to use the graphic interface to stop the robot if it is **running away!**
 
@@ -50,8 +51,8 @@ How to use the `Leap Motion`
 
 ## Credits
 
-- Co-author: [Clergue Valentin](https://github.com/HandyS11)
+- Co-author: [Valentin Clergue](https://github.com/HandyS11)
   
-- Co-author: [Imbert Antoine](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+- Co-author: [Antoine Imbert](https://github.com/AntoineBBR)
 
 - Professor: [Marc Chevaldonné](https://gitlab.iut-clermont.uca.fr/macheval) (Author of the librairies that make `LegoV3MindStorms` & `Leap Motion` working with C#)
