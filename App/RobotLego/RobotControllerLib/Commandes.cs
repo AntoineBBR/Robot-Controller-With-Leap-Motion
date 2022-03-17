@@ -1,4 +1,4 @@
-﻿namespace RobotControllerLib
+namespace RobotControllerLib
 {
     /// <summary>
     /// all direction detect by the leap motion
@@ -15,11 +15,11 @@
     /// </summary>
     public enum Commande
     {
-        HAUT,
-        BAS,
-        GAUCHE,
-        DROITE,
-        TOURNERGAUCHE,
-        TOURNERDROITE
+        HAUT,               //up
+        BAS,                //down
+        GAUCHE,             //left
+        DROITE,             //right
+        TOURNERGAUCHE,      //turn left
+        TOURNERDROITE       //turn right
     }
 }
