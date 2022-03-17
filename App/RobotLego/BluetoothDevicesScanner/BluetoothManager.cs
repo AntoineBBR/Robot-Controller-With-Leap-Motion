@@ -1,4 +1,4 @@
-﻿using InTheHand.Net.Sockets;
+using InTheHand.Net.Sockets;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -90,7 +90,7 @@ namespace BluetoothDevicesScanner
             {
                 BluetoothClient bluetoothClient = new BluetoothClient();
                 BluetoothDeviceInfo[] devicesInfo = bluetoothClient.DiscoverDevices(100, false, false, false, true);
-                return devicesInfo == null ? devicesInfo : null;
+                return devicesInfo;
             });
         }
     }
