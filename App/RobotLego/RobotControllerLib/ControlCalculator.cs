@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -147,7 +147,7 @@ namespace RobotControllerLib
         /// <summary>
         /// calculates the speed so that the robot moves at the same speed going straight, diagonally and sideways
         /// </summary>
-        public void SetAutoSpeed()
+        private void SetAutoSpeed()
         {
             if(ListeCommande.Count == 1)
             {
