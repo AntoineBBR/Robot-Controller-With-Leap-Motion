@@ -44,7 +44,7 @@ namespace LegoController
 
         public static void CommandsLoop()
         {
-            while(true)     // It's very ugly (yes), but since the feature is inerrant to the application, a way to pause it is unnecessary.
+            while (true)     // It's very ugly (yes), but since the feature is inerrant to the application, a way to pause it is unnecessary.
             {
                 while (!brickManager.Connected)
                 {
@@ -60,7 +60,7 @@ namespace LegoController
                     forwardSensor = brickManager.InputPort1.PercentValue < marge;
                     backwardSensor = brickManager.InputPort4.PercentValue < marge;
 
-                    Debug.WriteLine(forwardSensor);
+                    if ((forwardSensor || backwardSensor) && isStopOneTime == false) { commands.EmergencyStop(); isStopOneTime = true; }
 
                     if (lcommande.Count == 0 && isStopOneTime == false) { commands.EmergencyStop(); isStopOneTime = true; }
                     if (!lcommande.Contains(Commande.TOURNERGAUCHE) && !lcommande.Contains(Commande.TOURNERDROITE))
